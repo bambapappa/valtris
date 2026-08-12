@@ -41,6 +41,11 @@ export class PromisePool {
 
   spawn(): GamePiece {
     if (this.bag.length === 0) this.refill();
+    if (this.bag.length === 0) {
+      // Original set is empty — drawing would yield `undefined` and crash the
+      // engine downstream with a cryptic TypeError. Fail loudly instead.
+      throw new Error('promise pool is empty');
+    }
     // Each remaining piece equally likely — uniform over pieces, which makes
     // party representation mirror each party's share of the original set.
     const i = Math.floor(this.rng() * this.bag.length);

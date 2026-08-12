@@ -43,4 +43,12 @@ describe('PromisePool', () => {
       expect(ids.has(pool.spawn().id)).toBe(true);
     }
   });
+
+  it('throws (not returns undefined) when the original set is empty', () => {
+    const pool = new PromisePool([]);
+    // Guard against the Math.floor(rng()*0) → NaN → undefined → engine crash
+    // path. The pool must fail loudly so main() falls through to its
+    // designed-for offline message.
+    expect(() => pool.spawn()).toThrowError('promise pool is empty');
+  });
 });

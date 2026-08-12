@@ -5,11 +5,33 @@ import partiesRaw from './fixtures/parties.sample.json';
 
 describe('validation', () => {
   it('keeps active promises, drops non-active', () => {
-    const pieces = toGamePieces(validatePromises(promisesRaw));
-    // every output piece came from an active promise
-    for (const p of promisesRaw.data) {
-      if (p.status !== 'aktiv') expect(pieces.find((x) => x.id === p.id)).toBeUndefined();
-    }
+    // Hand-built payload with BOTH an active and a withdrawn (tillbakadragen)
+    // record. The sample fixture has 0 non-active records, so a fixture-only
+    // assertion would never enter its loop body — vacuous. This payload makes
+    // the filter's drop-branch observable.
+    const payload = {
+      data: [
+        {
+          id: 'keep-1',
+          title: 'aktivt löfte',
+          parties: ['s'],
+          category: 'välfärd',
+          status: 'aktiv',
+          cost: { msek_base: 100 },
+        },
+        {
+          id: 'drop-1',
+          title: 'tillbakadraget löfte',
+          parties: ['m'],
+          category: 'skatter',
+          status: 'tillbakadragen',
+          cost: { msek_base: 200 },
+        },
+      ],
+    };
+    const pieces = toGamePieces(validatePromises(payload));
+    expect(pieces.find((x) => x.id === 'keep-1')).toBeDefined();
+    expect(pieces.find((x) => x.id === 'drop-1')).toBeUndefined();
   });
   it('maps unknown category to övrigt and missing cost to 0', () => {
     const oneBad = { data: [{ id: 'x', title: 't', parties: ['s'], category: 'bagkategori', status: 'aktiv', cost: {} }] };

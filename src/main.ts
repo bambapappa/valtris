@@ -159,7 +159,9 @@ async function start() {
   try {
     const { promises, parties: p } = await fetchGameInput();
     parties = p;
-    pool = new PromisePool(toGamePieces(promises));
+    const pieces = toGamePieces(promises);
+    if (pieces.length === 0) throw new Error('no active promises');
+    pool = new PromisePool(pieces);
     showStatus('');
     reset();
     requestAnimationFrame(step);
