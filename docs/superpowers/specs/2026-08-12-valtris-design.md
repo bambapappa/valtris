@@ -70,17 +70,24 @@ sönder, och budgetproblemet kringgås helt.
 Fördelningen dokumenteras i koden när den fastställs. Valet att två kategorier
 delar form görs uttryckligen, inte i tysthet.
 
-## Löftespool — hybrid-C
+## Löftespool — ren löftespåse (tolkning 1)
 
 - Poolen består av aktiva löften, blandade.
-- Klossar dras **utan återläggning** — varje löfte dyker upp en gång innan
-  något upprepas. Vid uttömning (maratonspel) blandas poolen om.
+- Klossar dras **uniformt slumpmässigt utan återläggning** — varje löfte dyker
+  upp en gång innan något upprepas. Vid uttömning (maratonspel) blandas poolen om.
 - Återanvändning är **inte** bunden till radrensning (en kloss som återvänder
   efter att ha rensats vore konstigt och suddar ut datat).
-- **Antitorka-skydd:** eftersom formfrekvensen speglar verkligheten kan sällsynta
-  former (infrastruktur, försvar) “torka ut” och kännas orättvisa. Om en form
-  inte dykt upp på N klossar viks nästa drag mot den formens kategori. Detta
-  bevarar datatroheten och neutraliteten men jämnar ut de värsta torkorna.
+- **Ingen antitorka.** En tidigare design (hybrid-C) lät en sällsynt form
+  tvingas fram om den inte dykt upp på ett antal drag, för att ge bättre
+  spelkänsla. Neutralitetstestet bevisade att den mekanismen **bröt
+  neutralitetskontraktet**: formerna är kopplade till kategorier och kategorierna
+  är partikorrelerade, så att tvinga fram en sällsynt form boostade systematiskt
+  det parti som äger den (mätt +7 pp på en delmängd; konvergerade över frön och
+  N). Det går inte att boosta partikorrelerade former utan att vinkla
+  partirepresentationen, så antitorkan togs bort. Ren uniform dragning är neutral
+  per konstruktion och ger varje form sin *verkliga* andel — det är balanserat
+  mot utlovats data. Sällsynta kategorier (försvar, infrastruktur) förblir
+  proportionerligt sällsynta, vilket är det datatroget neutrala utfallet.
 
 ## Spel-loop
 
@@ -190,5 +197,4 @@ inte fixturer.
 
 - Slutgiltig kategori→form-kartläggning (preliminär ovan).
 - Exakta poängfaktorer (single/double/triple/tetris, nivåmultiplikator).
-- N i antitorka-skyddet (kalibreras mot kännsla).
 - v1-kodlicens.

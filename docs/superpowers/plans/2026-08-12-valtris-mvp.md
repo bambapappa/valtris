@@ -33,7 +33,7 @@ Copied verbatim from the design spec — every task's requirements implicitly in
 | `src/types.ts` | Shared types only (no logic) |
 | `src/mapping.ts` | category→shape, party→color, cost→lock-points (pure) |
 | `src/engine.ts` | Board ops: collision, rotation, lock, line-clear, game-over (pure) |
-| `src/pool.ts` | Promise bag, no-replacement draw, reshuffle, anti-drought (pure) |
+| `src/pool.ts` | Promise bag: uniform no-replacement draw, reshuffle on exhaust (pure; no anti-drought — see Task 4 revision) |
 | `src/score.ts` | Lock points + line bonus + level multiplier (pure) |
 | `src/api.ts` | Fetch + validate `promises.json`/`parties.json`; the only network module |
 | `src/render.ts` | Canvas drawing (geometry helpers pure + testable; paint is visual) |
@@ -601,7 +601,19 @@ git commit -m "feat: pure tetris engine (place/rotate/lock/clear/game-over)"
 
 ---
 
-## Task 4: Pool — no-replacement draw, reshuffle, anti-drought
+## Task 4: Pool — no-replacement draw, reshuffle
+
+> **REVISION 2026-08-12 (mänskligt beslut, efter att Task 7:s neutralitetstest
+> bevisade en partiskanism):** Anti-drought-mekanismen i den ursprungliga briefen
+> är **borttagen**. Den tvingade fram sällsynta former, men eftersom former är
+> kopplade till partikorrelerade kategorier boostade den systematiskt det
+> parti som äger formen — ett brott mot neutralitetskontraktet. Poolen ska nu
+> vara en **ren löftespåse**: uniform, slumpmässig dragning utan återläggning,
+> omblandning vid uttömning. Inga `antiDrought`-optioner, ingen formpreferens.
+> Koden och testerna nedan som rör anti-drought är **föråldrade** — se
+> istället design-dokumentets avsnitt "Löftespool — ren löftespåse" och
+> rework-dispatchen. Kvar gäller: no-replacement, reshuffle-on-exhaust,
+> inga dubbletter per pass.
 
 **Files:**
 - Create: `src/pool.ts`, `tests/pool.test.ts`
@@ -1034,8 +1046,18 @@ git commit -m "feat: api fetch + validation with offline fixtures"
 
 ## Task 7: Neutrality integration test
 
+> **REVISION 2026-08-12 (mänskligt beslut):** Testet ska köra mot **hela den
+> verkliga poolen** (~588 aktiva löften), inte 40-postersfixturen från Task 6
+> (som bara innehöll S och M och därmed inte mätte vad det påstod). Lägg in en
+> komplett live-snapshot som `tests/fixtures/promises.full.json` och låt
+> `neutrality.test.ts` läsa den. Poolen är nu en ren löftespåse (se Task 4-
+> revisionen), så testet förväntas passera per konstruktion — men det är
+> fortfarande testet som bevisar det, mot riktig data. Kvar gäller: seedad rng
+> för determinism, 5 pp-tolerans, sanity-check att varje parti med löften dyker
+> upp.
+
 **Files:**
-- Create: `tests/neutrality.test.ts`
+- Create: `tests/neutrality.test.ts`, `tests/fixtures/promises.full.json`
 
 **Interfaces:**
 - Consumes: `PromisePool` (Task 4), `toGamePieces`/`validatePromises` (Task 6), fixture (Task 6).
@@ -1595,7 +1617,7 @@ Wait for the `deploy` workflow to finish, open the Pages URL, and confirm: game 
 - **Spec coverage:**
   - Neutrality contract → Task 7 test + cosmetic-only wiring in Task 9. ✓
   - category→form, cost→score, party→cosmetic → Tasks 2, 5, 9. ✓
-  - Hybrid-C pool + anti-drought → Task 4 (tested). ✓
+  - Ren löftespåse (uniform dragning, ingen antitorka) → Task 4 (testad). Anti-drought togs bort efter att Task 7 bevisade en partiskanism; se Task 4-revisionen. ✓
   - Cost as score not lose-condition → engine loses only on top-out (Task 3), scoring (Task 5). ✓
   - Killer promise on game-over → Task 9 `showGameOver`. ✓
   - Local highscore only, no backend → Task 9; online deferred to v2 (spec). ✓
