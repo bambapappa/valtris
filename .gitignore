@@ -1,0 +1,14 @@
+# Bygg artefakter
+dist/
+node_modules/
+
+# Miljö och hemligheter
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.log
