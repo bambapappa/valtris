@@ -1,0 +1,79 @@
+{
+  "generated_at": "2026-08-12T16:42:44.639Z",
+  "data_hash": "cd4bbb6db2134dca337aacccd275dcf0be6db9419ff62155e203ec3fc92f5e8d",
+  "license": "CC-BY-4.0",
+  "data": [
+    {
+      "code": "s",
+      "name": "Socialdemokraterna",
+      "color": "#EE2020",
+      "color_text": "#EE2020",
+      "mandate_2022": 107,
+      "votes_2022": 1964474,
+      "block": "rödgrönt"
+    },
+    {
+      "code": "m",
+      "name": "Moderaterna",
+      "color": "#1B5CB3",
+      "color_text": "#1B5CB3",
+      "mandate_2022": 68,
+      "votes_2022": 1237428,
+      "block": "borgerligt"
+    },
+    {
+      "code": "sd",
+      "name": "Sverigedemokraterna",
+      "color": "#DDDDDD",
+      "color_text": "#4B4B4B",
+      "mandate_2022": 73,
+      "votes_2022": 1330325,
+      "block": "borgerligt"
+    },
+    {
+      "code": "c",
+      "name": "Centerpartiet",
+      "color": "#00939D",
+      "color_text": "#006E76",
+      "mandate_2022": 24,
+      "votes_2022": 434945,
+      "block": "borgerligt"
+    },
+    {
+      "code": "v",
+      "name": "Vänsterpartiet",
+      "color": "#DA291C",
+      "color_text": "#DA291C",
+      "mandate_2022": 24,
+      "votes_2022": 437050,
+      "block": "rödgrönt"
+    },
+    {
+      "code": "kd",
+      "name": "Kristdemokraterna",
+      "color": "#2B4A7E",
+      "color_text": "#2B4A7E",
+      "mandate_2022": 19,
+      "votes_2022": 345712,
+      "block": "borgerligt"
+    },
+    {
+      "code": "l",
+      "name": "Liberalerna",
+      "color": "#006AB3",
+      "color_text": "#006AB3",
+      "mandate_2022": 16,
+      "votes_2022": 298542,
+      "block": "borgerligt"
+    },
+    {
+      "code": "mp",
+      "name": "Miljöpartiet",
+      "color": "#53A524",
+      "color_text": "#3D7A1A",
+      "mandate_2022": 18,
+      "votes_2022": 329242,
+      "block": "rödgrönt"
+    }
+  ]
+}

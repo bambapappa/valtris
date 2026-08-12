@@ -1,0 +1,1596 @@
+{
+  "generated_at": "2026-08-12T16:42:44.667Z",
+  "data_hash": "cd4bbb6db2134dca337aacccd275dcf0be6db9419ff62155e203ec3fc92f5e8d",
+  "license": "CC-BY-4.0",
+  "data": [
+    {
+      "id": "p-2026-0001",
+      "group_id": null,
+      "title": "Men vi lovar att göra vårt yttersta för att ditt liv och din vardag ska bli lite bättre och lite enklare",
+      "slug": "men-vi-lovar-att-gora-vart-yttersta-for-att-ditt-liv-och-din-vardag-ska-bli-lite-battre-och-lite-enklare",
+      "parties": [
+        "s"
+      ],
+      "person": null,
+      "quote": "Men vi lovar att göra vårt yttersta för att ditt liv och din vardag ska bli lite bättre och lite enklare.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "övrigt",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "parti",
+        "basis_url": null,
+        "method_note": "Ej kvantifierbart — politiskt inriktninglöfte utan specifikt belopp",
+        "calculation": "Löftet uttrycker en riktning och pekar inte ut någon åtgärd med en nivå, ett antal eller ett belopp. Det finns därför ingenting att räkna på, och beloppet sätts till noll. Lägger partiet ett konkret förslag på området prissätts det som ett eget löfte — annars skulle samma politik räknas två gånger.",
+        "confidence": 0.2
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0002",
+      "group_id": null,
+      "title": "Vi ska ge tillbaka det du förlorat med ett plånbokslöfte: höjt barn- och studiebidrag, billigare mediciner, avgiftsfri tandvård för unga",
+      "slug": "vi-ska-ge-tillbaka-det-du-forlorat-med-ett-planbokslofte-hojt-barn-och-studiebidrag-billigare-mediciner-avgiftsfri-tandvard-for-unga",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi ska ge tillbaka det du förlorat med ett plånbokslöfte: höjt barn- och studiebidrag, billigare mediciner, avgiftsfri tandvård för unga, hårdare press på banker och matkedjor och starkare skydd mot höga elpriser för villaägare.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 3500,
+        "msek_base": 6200,
+        "msek_high": 12000,
+        "basis": "granskare",
+        "basis_url": null,
+        "method_note": "Tre av delarna pekar ut en bestämd förmån utan att ange nivå och prissätts som samma åtgärd senast kostade. Övriga delar är riktningar eller regleringar och kostar staten inget nytt.",
+        "calculation": "Löftet räknar upp sex delar, varav tre pekar ut en bestämd förmån. Höjt barnbidrag: ingen nivå anges, så vi räknar med samma steg som den senaste faktiska höjningen — 200 kronor i månaden, 2018. Försäkringskassan betalade ut 2,65 miljarder kronor i barnbidrag i december 2025, vilket efter avdrag för flerbarnstillägg motsvarar omkring 1,9 miljoner barn: 1,9 miljoner × 200 kronor × 12 månader ≈ 4 600 miljoner kronor per år. Höjt studiebidrag: samma steg för omkring 300 000 gymnasieelever, utbetalt tio månader om året ≈ 600 miljoner. Avgiftsfri tandvård för unga: samma nivå som Vänsterpartiets löfte om samma sak, 1 000 miljoner. Billigare mediciner, press på banker och matkedjor och skydd mot elpriser pekar inte ut någon åtgärd och prissätts inte. Summa 6 200 miljoner kronor per år.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0003",
+      "group_id": null,
+      "title": "Pensionen ska bli bättre för den som slitit ett helt arbetsliv",
+      "slug": "pensionen-ska-bli-battre-for-den-som-slitit-ett-helt-arbetsliv",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Pensionen ska bli bättre för den som slitit ett helt arbetsliv.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "välfärd",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Citatet säger att pensionen ska bli bättre men inte vilken pension eller med hur mycket. Partiet har inget annat prissatt pensionslöfte — nollan beror på att nivån saknas, inte på att kostnaden ligger någon annanstans.",
+        "calculation": "Löftet säger att pensionen ska bli bättre för den som slitit ett helt arbetsliv. \"Bättre\" är ett värdeord och ingen nivå, och citatet pekar inte ut vilken del av pensionen som ska höjas — garantipension, inkomstpension eller något annat. Ett värdeord översätts aldrig till en siffra. Den tidigare texten sade att kostnaden låg på partiets konkreta pensionslöften; något sådant löfte finns inte, och den uppgiften är därför borttagen. Noll betyder att löftet inte går att prissätta på det som står i citatet — inte att en bättre pension är gratis.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0004",
+      "group_id": null,
+      "title": "Vi vill samla partier över blockgränserna för en bred överenskommelse om Sveriges energi",
+      "slug": "vi-vill-samla-partier-over-blockgranserna-for-en-bred-overenskommelse-om-sveriges-energi",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi vill samla partier över blockgränserna för en bred överenskommelse om Sveriges energi.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "klimat-miljö",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "parti",
+        "basis_url": null,
+        "method_note": "Ej kvantifierbart — politiskt inriktninglöfte utan specifikt belopp",
+        "calculation": "Löftet är att samla partier över blockgränserna till en energiöverenskommelse. Att bjuda in till förhandlingar kostar ingenting i sig, och vad en överenskommelse skulle innehålla går inte att veta innan den finns. Det som eventuellt beslutas inom en sådan överenskommelse prissätts som egna löften. Beloppet sätts därför till noll.",
+        "confidence": 0.2
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0005",
+      "group_id": null,
+      "title": "Vi ska skapa nya jobb och minska arbetslösheten genom investeringar, nya jobb i välfärden och omfattande utbildningssatsningar",
+      "slug": "vi-ska-skapa-nya-jobb-och-minska-arbetslosheten-genom-investeringar-nya-jobb-i-valfarden-och-omfattande-utbildningssatsningar",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi ska skapa nya jobb och minska arbetslösheten genom investeringar, nya jobb i välfärden och omfattande utbildningssatsningar.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Brett löfte över flera områden utan angiven nivå. Prissätts inte här; kostnaden ligger på partiets specifika löften.",
+        "calculation": "Löftet räknar upp flera politikområden utan att ange någon nivå. Ett sådant brett löfte prissätts inte: de konkreta åtagandena finns på partiets egna specifika löften och skulle annars räknas två gånger. Noll betyder alltså inte att politiken är gratis — kostnaden ligger på de enskilda löftena.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0006",
+      "group_id": null,
+      "title": "Vi ska införa en jobbtrappa till självförsörjning och jobbkontrakt för unga",
+      "slug": "vi-ska-infora-en-jobbtrappa-till-sjalvforsorjning-och-jobbkontrakt-for-unga",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi ska införa en jobbtrappa till självförsörjning och jobbkontrakt för unga.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 1000,
+        "msek_base": 3000,
+        "msek_high": 8000,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Subventionerade anställningar för unga: antal deltagare gånger subvention per plats.",
+        "calculation": "Det finns omkring 100 000 unga arbetslösa. Antas hälften av dem, 50 000, få en subventionerad anställning genom jobbkontraktet till en subvention av 60 000 kronor per plats och år blir kostnaden 3 000 miljoner kronor per år. Det låga alternativet räknar med en tredjedel så många platser (1 000 miljoner) och det höga med att jobbtrappan även omfattar vuxna som går från bidrag till arbete (8 000 miljoner). Citatet talar om unga, så basbeloppet håller sig till den gruppen.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0007",
+      "group_id": null,
+      "title": "Skarpa krav genom att en aktivitetsplikt införs så att ingen fastnar i arbetslöshet",
+      "slug": "skarpa-krav-genom-att-en-aktivitetsplikt-infors-sa-att-ingen-fastnar-i-arbetsloshet",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Skarpa krav genom att en aktivitetsplikt införs så att ingen fastnar i arbetslöshet.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "utgift",
+        "period": "engang",
+        "msek_low": 1,
+        "msek_base": 15,
+        "msek_high": 50,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Prissätter regelverksarbetet: föreskrifter, it-anpassning och utbildning. Aktivitetsplikten utförs av kommunerna och Arbetsförmedlingen inom befintlig verksamhet.",
+        "calculation": "Löftet prissätts som det arbete staten själv måste göra för att införa plikten: 5–10 handläggarår för utrednings- och föreskriftsarbete à 0,7 miljoner kronor blir 3,5–7 miljoner, anpassning av ärendehanteringssystemen 5–20 miljoner och utbildning av personal 2–5 miljoner. Totalt 10–30 miljoner kronor som en engångskostnad. Själva aktiviteterna utförs och betalas av kommunerna och Arbetsförmedlingen inom befintlig verksamhet — det är ingen ny kostnad för staten. Löftet anger inga nya program utöver plikten i sig.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0008",
+      "group_id": null,
+      "title": "Den aktiva arbetsmarknadspolitiken återuppbyggs, omställningspolitiken och arbetslöshetsförsäkringen förbättras, yrkesutbildningarna byggs",
+      "slug": "den-aktiva-arbetsmarknadspolitiken-ateruppbyggs-omstallningspolitiken-och-arbetsloshetsforsakringen-forbattras-yrkesutbildningarna-byggs",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Den aktiva arbetsmarknadspolitiken återuppbyggs, omställningspolitiken och arbetslöshetsförsäkringen förbättras, yrkesutbildningarna byggs ut och fler möjligheter till omskolning för arbetslösa och människor i behov införs.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Brett löfte över flera områden utan angiven nivå. Prissätts inte här; kostnaden ligger på partiets specifika löften.",
+        "calculation": "Löftet räknar upp flera politikområden utan att ange någon nivå. Ett sådant brett löfte prissätts inte: de konkreta åtagandena finns på partiets egna specifika löften och skulle annars räknas två gånger. Noll betyder alltså inte att politiken är gratis — kostnaden ligger på de enskilda löftena.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0009",
+      "group_id": null,
+      "title": "Vi ska genomföra ett landsbygdslyft och det ska gå att leva, arbeta och bygga sin framtid i hela landet",
+      "slug": "vi-ska-genomfora-ett-landsbygdslyft-och-det-ska-ga-att-leva-arbeta-och-bygga-sin-framtid-i-hela-landet",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi ska genomföra ett landsbygdslyft och det ska gå att leva, arbeta och bygga sin framtid i hela landet.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "infrastruktur",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Brett löfte över flera områden utan angiven nivå. Prissätts inte här; kostnaden ligger på partiets specifika löften.",
+        "calculation": "Löftet räknar upp flera politikområden utan att ange någon nivå. Ett sådant brett löfte prissätts inte: de konkreta åtagandena finns på partiets egna specifika löften och skulle annars räknas två gånger. Noll betyder alltså inte att politiken är gratis — kostnaden ligger på de enskilda löftena.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0010",
+      "group_id": null,
+      "title": "Vi ska satsa på vårdpersonalen",
+      "slug": "vi-ska-satsa-pa-vardpersonalen",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi ska satsa på vårdpersonalen.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "välfärd",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Riktningslöfte utan angiven nivå. Prissätts inte här; kostnaden ligger på partiets konkreta vårdlöften.",
+        "calculation": "Löftet säger att vårdpersonalen ska få en satsning, men inte hur många fler som ska anställas eller hur mycket lönerna ska höjas. Det tidigare beloppet byggde på antagandet om 10 000 nya vårdjobb, ett antal som inte står i löftet. Utan angiven nivå prissätts löftet inte. Kostnaden ligger på partiets konkreta vårdlöften.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0011",
+      "group_id": "g-fast-lakarkontakt",
+      "title": "För att öka tryggheten ska alla ha en fast namngiven läkare på vårdcentralen",
+      "slug": "for-att-oka-tryggheten-ska-alla-ha-en-fast-namngiven-lakare-pa-vardcentralen",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "För att öka tryggheten ska alla ha en fast namngiven läkare på vårdcentralen.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "välfärd",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 1500,
+        "msek_base": 3000,
+        "msek_high": 4500,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Estimat: Kräver fler vårdcentraler/läkare. Ca 1200 vårdcentraler × extra läkartid. Estimat 3 mdr/år.",
+        "calculation": "Uträkningen är rekonstruerad i efterhand; det ursprungliga resonemanget sparades inte. ~10,5 miljoner invånare. Idag har många redan en fast läkare, men för att garantera namngiven läkare åt alla antas ett behov av 600–1200 nya allmänläkare (10–20% av dagens ca 6000). Årskostnad per läkare inkl. mottagning ~1,5 miljoner kronor → 900–1800 miljoner kronor. Lägg till administration, it-system och kontinuitetsincitament, vilket ger ett bredare intervall 1500–4500 miljoner kronor per år. Bas 3000 miljoner kronor motsvarar medelscenario likt tidigare uppskattning.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0012",
+      "group_id": null,
+      "title": "Psykiatrin ska stärkas, inte minst för barn och unga",
+      "slug": "psykiatrin-ska-starkas-inte-minst-for-barn-och-unga",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Psykiatrin ska stärkas, inte minst för barn och unga.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "välfärd",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Riktningslöfte utan angiven nivå. Prissätts inte här; kostnaden ligger på partiets konkreta psykiatrilöften.",
+        "calculation": "Löftet säger att psykiatrin ska stärkas men anger varken hur många fler som ska få vård, hur mycket pengar som avses eller vilken åtgärd som ska vidtas. Utan angiven nivå finns ingen uträkning att göra — ett belopp här skulle vara en gissning. Psykiatrin drivs dessutom av regionerna. Kostnaden ligger på partiets konkreta vårdlöften.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0013",
+      "group_id": null,
+      "title": "Vi vill stoppa privatiseringar av svenska akutsjukhus och göra upp med de marknadsmisslyckanden som försämrar svensk sjukvård",
+      "slug": "vi-vill-stoppa-privatiseringar-av-svenska-akutsjukhus-och-gora-upp-med-de-marknadsmisslyckanden-som-forsamrar-svensk-sjukvard",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi vill stoppa privatiseringar av svenska akutsjukhus och göra upp med de marknadsmisslyckanden som försämrar svensk sjukvård.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "välfärd",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Ingen ny direkt kostnad — förbud mot framtida privatiseringar. Eventuell kostnad om staten/kommunen köper tillbaka befintliga. Sätter 0 då det är ett förbud.",
+        "calculation": "Uträkningen är rekonstruerad i efterhand; det ursprungliga resonemanget sparades inte. Löftet hålls av en reglering. Statens direkta kostnad — lagstiftningsarbete och tillsyn — är försumbar. Vad regleringen kan betyda för vårdens kostnader längre fram räknas inte in: beloppet avser åtgärden, inte dess följder.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0014",
+      "group_id": "g-mindre-klasser",
+      "title": "Därför vill vi satsa på fler lärare och mindre klasser",
+      "slug": "darfor-vill-vi-satsa-pa-fler-larare-och-mindre-klasser",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Därför vill vi satsa på fler lärare och mindre klasser.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "utbildning",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 1500,
+        "msek_base": 2700,
+        "msek_high": 4500,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Partiet anger ingen nivå. Beloppet förutsätter samma förutsättningar som det enda löftet om mindre klasser som gör det: ett tak på tjugo elever per klass.",
+        "calculation": "Fler lärare och mindre klasser är samma åtgärd: en klass till kräver en lärare till. Grundskolan har omkring 1 100 000 elever och en genomsnittlig klass på 21,5 elever, alltså omkring 51 200 klasser. Ett tak på tjugo elever ger omkring 55 000 klasser — 3 800 fler än i dag. Varje ny klass kostar en heltidstjänst plus lokaler, omkring 700 000 kronor per år, vilket ger 2 700 miljoner kronor per år vid full utbyggnad i hela grundskolan. Spannet 1 500–4 500 speglar stegvis införande och att lokalbehovet varierar. Bara ett av löftena anger en nivå — taket på tjugo elever. Övriga partier har inte sagt hur mycket mindre klasserna ska bli, så deras löften prissätts under antagandet att de avser samma sak. Antagandet är vårt, inte partiernas.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0015",
+      "group_id": null,
+      "title": "Vi vill förbjuda religiösa friskolor",
+      "slug": "vi-vill-forbjuda-religiosa-friskolor",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi vill förbjuda religiösa friskolor.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "utbildning",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Förbud mot religiösa friskolor — ingen ny statlig kostnad. Elever flyttas till kommunala skolor som redan finansieras.",
+        "calculation": "Uträkningen är rekonstruerad i efterhand; det ursprungliga resonemanget sparades inte. Ingen ny statlig utgift: proposition och riksdagsbehandling sker inom befintliga anslag. Skolpeng är en kommunal kostnad och statens utbetalningar till kommuner förändras ej direkt. Eventuella övergångseffekter är ovissa och avräknas enligt reglerna ej som statlig kostnad.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0016",
+      "group_id": "g-aldreomsorg-satsning",
+      "title": "Du som jobbar i äldreomsorgen ska få bättre villkor och fler kollegor vid din sida",
+      "slug": "du-som-jobbar-i-aldreomsorgen-ska-fa-battre-villkor-och-fler-kollegor-vid-din-sida",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Du som jobbar i äldreomsorgen ska få bättre villkor och fler kollegor vid din sida.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "välfärd",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 1800,
+        "msek_base": 3000,
+        "msek_high": 9000,
+        "basis": "llm_estimat",
+        "basis_url": "https://www.socialstyrelsen.se/om-socialstyrelsen/pressrum/press/miljarder-i-statsbidrag-lyft--for-aldreomsorgen/",
+        "method_note": "Höjda riktade statsbidrag till äldreomsorgen. Löftet anger ingen nivå, så beloppet vilar på storleken hos statens befintliga bidrag. Delat löfte med Liberalernas storsatsning på äldreomsorgen — samma politik räknas en gång.",
+        "calculation": "Löftet säger att personalen i äldreomsorgen ska få bättre villkor och fler kollegor, men anger ingen nivå. Utan nivå prissätts löftet som ett nytt riktat statsbidrag av vanlig storlek. Kommuner och regioner delade på närmare nio miljarder kronor i riktade statsbidrag till äldreomsorgen 2023, fördelat på sex bidrag, och det största enskilda — Äldreomsorgslyftet — ligger på omkring 1,8 miljarder kronor per år. Basbeloppet läggs på 3 000 miljoner kronor per år, alltså ett nytt bidrag som är större än det största befintliga. Låg: 1 800, ett bidrag i samma storlek som Äldreomsorgslyftet. Hög: 9 000, en fördubbling av allt staten i dag öronmärker för äldreomsorgen. Lönerna i äldreomsorgen sätts av kommunerna och deras motparter, inte av staten.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0017",
+      "group_id": null,
+      "title": "Gängens nyrekrytering ska hindras med ökad övervakning, punktmarkering av ungdomar i riskzon och ett riskfamiljsprogram",
+      "slug": "gangens-nyrekrytering-ska-hindras-med-okad-overvakning-punktmarkering-av-ungdomar-i-riskzon-och-ett-riskfamiljsprogram",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Gängens nyrekrytering ska hindras med ökad övervakning, punktmarkering av ungdomar i riskzon och ett riskfamiljsprogram.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "rättsväsende",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 200,
+        "msek_base": 400,
+        "msek_high": 800,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Estimat: Övervakning, punktmarkering ungdomar, riskfamiljsprogram. Estimat 2 mdr/år.",
+        "calculation": "Uträkningen är rekonstruerad i efterhand; det ursprungliga resonemanget sparades inte. Familjeprogram: 1000–3000 familjer × 100–200 000 kronor/familj ≈ 100–600 miljoner kronor. Övervakning (kameror och personal): 50–200 miljoner kronor. Punktmarkering (extra socialarbetare/polis): 50–200 miljoner kronor. Totalt intervall 200–800 miljoner kronor, med basen 400 miljoner kronor. Stor osäkerhet om omfattning.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0018",
+      "group_id": null,
+      "title": "Arbetslivskriminaliteten ska bekämpas och fiffel med skatter, arbetsvillkor och utnyttjandet av arbetskraft måste stoppas",
+      "slug": "arbetslivskriminaliteten-ska-bekampas-och-fiffel-med-skatter-arbetsvillkor-och-utnyttjandet-av-arbetskraft-maste-stoppas",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Arbetslivskriminaliteten ska bekämpas och fiffel med skatter, arbetsvillkor och utnyttjandet av arbetskraft måste stoppas.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "rättsväsende",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 200,
+        "msek_base": 400,
+        "msek_high": 800,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Utökad kontroll och tillsyn hos de myndigheter som bekämpar arbetslivskriminalitet.",
+        "calculation": "Arbetet delas mellan 3–5 myndigheter — Skatteverket, Arbetsmiljöverket, Polisen med flera. Antas var och en få 40–160 miljoner kronor per år för utökad kontroll och tillsyn blir summan 150–800 miljoner. Basbeloppet är 400 miljoner motsvarar en måttlig nivå.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0019",
+      "group_id": null,
+      "title": "Vi ska införa aktivitetsplikt, språkplikt och jobbtrappa",
+      "slug": "vi-ska-infora-aktivitetsplikt-sprakplikt-och-jobbtrappa",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi ska införa aktivitetsplikt, språkplikt och jobbtrappa. Det ska vara tydligt vilka lagar och värderingar som gäller i Sverige.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "migration",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Uppräkning av tre plikter. Prissätts inte här; delarna ligger på partiets egna löften om aktivitetsplikt och jobbtrappa.",
+        "calculation": "Löftet räknar upp tre plikter — aktivitetsplikt, språkplikt och jobbtrappa — utan att ange nivå för någon av dem. Två av de tre finns redan som egna löften hos partiet och är prissatta där: aktivitetsplikten och jobbtrappan. Att sätta ett belopp här skulle räkna samma politik två gånger. Noll betyder alltså inte att plikterna är gratis, utan att kostnaden ligger på de enskilda löftena.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0020",
+      "group_id": "g-s-militar-upprustning",
+      "title": "Sveriges militära förmåga ska snabbt byggas upp",
+      "slug": "sveriges-militara-formaga-ska-snabbt-byggas-upp",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Sveriges militära förmåga ska snabbt byggas upp.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "försvar",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Riktningslöfte utan angiven nivå. Prissätts inte här; kostnaden ligger på partiets konkreta försvarslöften.",
+        "calculation": "Löftet säger att den militära förmågan ska byggas upp snabbt, men anger ingen nivå, inget årtal och ingen andel av BNP. Det tidigare beloppet byggde på en antagen upptrappning som inte står i löftet. Partiets konkreta försvarslöften prissätts var för sig — att också prissätta den här formuleringen skulle räkna samma pengar två gånger.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0021",
+      "group_id": "g-s-militar-upprustning",
+      "title": "Vi vill se en omfattande upprustning och fler värnpliktiga",
+      "slug": "vi-vill-se-en-omfattande-upprustning-och-fler-varnpliktiga",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi vill se en omfattande upprustning och fler värnpliktiga. Vårt luftrum ska skyddas av stridsflyg, våra vatten av moderna stridsfartyg och vårt land av en stark armé.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "försvar",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 5000,
+        "msek_base": 10000,
+        "msek_high": 25000,
+        "basis": "granskare",
+        "basis_url": "https://www.regeringen.se/regeringens-politik/forsvarsbudget/",
+        "method_note": "Upprustning utan angiven nivå. Ankrad i det senast beslutade tillskottet till försvarsanslaget, 10 miljarder kronor i budgeten för 2026. Femprocentsmålet är andra partiers nivå och sätter inte beloppet.",
+        "calculation": "Löftet pekar ut en åtgärd — upprustning av försvaret och fler värnpliktiga — men anger ingen nivå: varken andel av BNP, årtal eller antal. Beloppet ankras därför i vad samma åtgärd senast faktiskt kostade. Regeringen skriver att anslagen till det militära försvaret \"tillförs 10 miljarder kronor 2026\", utöver uppräkningar och tidigare beslut. Det tillskottet är basbeloppet: 10 miljarder kronor per år. Det låga alternativet gäller om ett sådant tillskott trappas upp och når full nivå först sista året, vilket i genomsnitt kostar ungefär hälften. Det höga gäller om ett lika stort tillskott läggs till i varje budget 2027–2030 — 10, 20, 30 och 40 miljarder, i snitt 25. Värnpliktens utbyggnad betalas ur samma anslag och räknas inte en gång till.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0022",
+      "group_id": null,
+      "title": "Vi vill skydda public service och föreningslivet",
+      "slug": "vi-vill-skydda-public-service-och-foreningslivet",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi vill skydda public service och föreningslivet.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "övrigt",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Behåller nuvarande finansiering av public service (ca 13 mdr/år via public service-avgiften). Ingen merkostnad.",
+        "calculation": "Uträkningen är rekonstruerad i efterhand; det ursprungliga resonemanget sparades inte. Ingen specifik åtgärd eller målgrupp anges. Löftet är ett inriktningslöfte utan nya kostnader. 0 kr.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0023",
+      "group_id": null,
+      "title": "Alla former av våldsbejakande ideologier ska bekämpas med samhällets fulla kraft",
+      "slug": "alla-former-av-valdsbejakande-ideologier-ska-bekampas-med-samhallets-fulla-kraft",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Alla former av våldsbejakande ideologier ska bekämpas med samhällets fulla kraft.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "rättsväsende",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Riktningslöfte utan utpekad åtgärd. Prissätts inte här.",
+        "calculation": "Löftet uttrycker en ambition att bekämpa våldsbejakande ideologier, utan att peka ut någon åtgärd, någon myndighet eller någon resursnivå. Utan konkret åtagande finns ingen ny statlig utgift att räkna på.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0024",
+      "group_id": null,
+      "title": "Vi lovar sammanhållning, inte splittring",
+      "slug": "vi-lovar-sammanhallning-inte-splittring",
+      "parties": [
+        "s"
+      ],
+      "person": {
+        "name": "Magdalena Andersson",
+        "role": "företrädare"
+      },
+      "quote": "Vi lovar sammanhållning, inte splittring. Vi lovar investeringar, inte nedskärningar. Vi lovar gemensamt ansvar, inte egoism.",
+      "date_stated": "2026-06-25",
+      "source": {
+        "url": "https://www.socialdemokraterna.se/val-2026",
+        "domain": "socialdemokraterna.se",
+        "archive_url": "https://web.archive.org/web/20260625104307/https://www.socialdemokraterna.se/val-2026"
+      },
+      "category": "övrigt",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "parti",
+        "basis_url": null,
+        "method_note": "Ej kvantifierbart — politiskt inriktninglöfte utan specifikt belopp",
+        "calculation": "Löftet uttrycker en riktning och pekar inte ut någon åtgärd med en nivå, ett antal eller ett belopp. Det finns därför ingenting att räkna på, och beloppet sätts till noll. Lägger partiet ett konkret förslag på området prissätts det som ett eget löfte — annars skulle samma politik räknas två gånger.",
+        "confidence": 0.2
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0025",
+      "group_id": null,
+      "title": "Sverige ska ha högst levnadsstandard i EU inom tio år",
+      "slug": "sverige-ska-ha-hogst-levnadsstandard-i-eu-inom-tio-ar",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Sverige ska ha högst levnadsstandard i EU inom tio år.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260624214226/https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "parti",
+        "basis_url": null,
+        "method_note": "Ej kvantifierbart — politiskt inriktninglöfte",
+        "calculation": "Löftet är ett mål för hela samhällsekonomin — högst levnadsstandard i EU inom tio år — och inte en åtgärd staten kan genomföra och betala för. Ett mål har ingen prislapp; det är de åtgärder som ska leda dit som kostar, och de prissätts som egna löften. Beloppet sätts därför till noll.",
+        "confidence": 0.2
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0026",
+      "group_id": "g-sankt-skatt-pa-arbete",
+      "title": "Fortsätta sänka skatten för vanliga familjer",
+      "slug": "fortsatta-sanka-skatten-for-vanliga-familjer",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Fortsätta sänka skatten för vanliga familjer.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260624214226/https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "intäktsminskning",
+        "period": "per_ar",
+        "msek_low": 8000,
+        "msek_base": 17000,
+        "msek_high": 35000,
+        "basis": "llm_estimat",
+        "basis_url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/statens-budget-2026-rambeslutet_hd01fiu1/",
+        "method_note": "Ytterligare ett steg i skatten på arbetsinkomster, utan angiven nivå. Delat löfte med partiets och ett annat partis löften om samma sak.",
+        "calculation": "Löftet anger ingen nivå, så det prissätts som ett steg av samma storlek som det senast tagna: det tionde jobbskatteavdraget, i budgeten för 2026, kostade 17,36 miljarder kronor per år. Basbeloppet är därför 17 miljarder kronor per år. Partiets eget löfte om sänkt skatt för alla som arbetar och ett annat partis löfte om sänkt skatt för vanligt folk är samma politik, och de tre räknas en gång och på samma grund.",
+        "confidence": 0.55
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0027",
+      "group_id": null,
+      "title": "Se till att fler får behålla mer av sina egna intjänade pengar",
+      "slug": "se-till-att-fler-far-behalla-mer-av-sina-egna-intjanade-pengar",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Se till att fler får behålla mer av sina egna intjänade pengar. Därför sänks skatten på arbete, mat och el i budgeten för 2026, vilket innebär att en vanlig familj får 1 800 kronor mer i plånboken varje månad.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260624214226/https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "intäktsminskning",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/betankande/statens-budget-2026-rambeslutet_hd01fiu1/",
+        "method_note": "Skattesänkningarna ligger i budgeten för 2026, som redan är beslutad. Kvar är en inriktning som bärs av partiets egna konkreta skattelöften.",
+        "calculation": "De skattesänkningar citatet räknar upp — på arbete, mat och el — ligger i budgeten för 2026, som riksdagen redan har beslutat. De är alltså gällande rätt och ingen ny kostnad för mandatperioden 2027–2030. Kvar av löftet är inriktningen att fler ska få behålla mer av sina egna pengar, och den bärs av partiets egna konkreta skattelöften, som prissätts var för sig. De 1 800 kronorna i månaden är dessutom vad en familj får av hela budgeten, inte vad ett nytt löfte kostar.",
+        "confidence": 0.6
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0028",
+      "group_id": "g-marginalskatt-under-50",
+      "title": "Förändra den statliga inkomstskatten så att fler i vanliga yrken får behålla minst 50 procent av sin intjänade lön",
+      "slug": "forandra-den-statliga-inkomstskatten-sa-att-fler-i-vanliga-yrken-far-behalla-minst-50-procent-av-sin-intjanade-lon",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Förändra den statliga inkomstskatten så att fler i vanliga yrken får behålla minst 50 procent av sin intjänade lön.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260624214226/https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "intäktsminskning",
+        "period": "per_ar",
+        "msek_low": 10000,
+        "msek_base": 20000,
+        "msek_high": 35000,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Ingen marginalskatt över femtio procent. Prissatt som en höjd brytpunkt för statlig inkomstskatt. Delat löfte med ett annat parti.",
+        "calculation": "Den statliga inkomstskatten är 20 procent på inkomst över brytpunkten 660 400 kronor, och drygt en miljon personer betalar den. Hela skatten drar in i storleksordningen 54–60 miljarder kronor per år. Att ingen ska betala mer än hälften i marginalskatt betyder att brytpunkten höjs eller skattesatsen sänks, och båda gynnar alla som betalar skatten — inte bara de närmast gränsen. Höjs brytpunkten med omkring 10 000 kronor i månaden faller 20 procent av 120 000 kronor bort för var och en av dem: cirka 20 miljarder kronor per år. Ett annat parti lovar samma sak, och löftena räknas en gång och på samma grund.",
+        "confidence": 0.5
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0029",
+      "group_id": null,
+      "title": "Säkerställa att arbete alltid lönar sig bättre än bidrag",
+      "slug": "sakerstalla-att-arbete-alltid-lonar-sig-battre-an-bidrag",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Säkerställa att arbete alltid lönar sig bättre än bidrag.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260624214226/https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "parti",
+        "basis_url": null,
+        "method_note": "Ej kvantifierbart — politiskt inriktninglöfte",
+        "calculation": "Löftet uttrycker en riktning och pekar inte ut någon åtgärd med en nivå, ett antal eller ett belopp. Det finns därför ingenting att räkna på, och beloppet sätts till noll. Lägger partiet ett konkret förslag på området prissätts det som ett eget löfte — annars skulle samma politik räknas två gånger.",
+        "confidence": 0.2
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0030",
+      "group_id": null,
+      "title": "Göra det enklare och billigare att vara företagare i Sverige",
+      "slug": "gora-det-enklare-och-billigare-att-vara-foretagare-i-sverige",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Göra det enklare och billigare att vara företagare i Sverige.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260624214226/https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Riktningslöfte utan utpekad åtgärd. Prissätts inte här; kostnaden ligger på partiets konkreta företagarlöften.",
+        "calculation": "Löftet anger en riktning — enklare och billigare för företagare — utan att säga vilka regler som ska tas bort eller vilka avgifter som ska sänkas. Partiets konkreta förenklings- och skattelöften prissätts var för sig, så ett belopp här skulle räkna samma politik två gånger.",
+        "confidence": 0.3
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0031",
+      "group_id": null,
+      "title": "Reformera miljöbalken för att göra den mer flexibel, effektiv och förutsebar",
+      "slug": "reformera-miljobalken-for-att-gora-den-mer-flexibel-effektiv-och-forutsebar",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Reformera miljöbalken för att göra den mer flexibel, effektiv och förutsebar.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260624214226/https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Löftet hålls av en regeländring. Statens direkta kostnad för ändringen är försumbar; beloppet avser åtgärden, inte dess följder.",
+        "calculation": "Löftet hålls av en regel- eller lagändring. Statens direkta kostnad för att ändra regeln ryms i ordinarie beredningsarbete och är försumbar. Beloppet avser åtgärden, inte vad den kan leda till i samhället.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0032",
+      "group_id": null,
+      "title": "Sänka bolagsskatten, med ambitionen att Sverige över tid ska ha en av EU:s mest konkurrenskraftiga skattesatser, och sänka",
+      "slug": "sanka-bolagsskatten-med-ambitionen-att-sverige-over-tid-ska-ha-en-av-eu-s-mest-konkurrenskraftiga-skattesatser-och-sanka",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Sänka bolagsskatten, med ambitionen att Sverige över tid ska ha en av EU:s mest konkurrenskraftiga skattesatser, och sänka arbetsgivaravgifterna så att fler företag kan växa och anställa.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260624214226/https://moderaterna.se/var-politik/ekonomisk-politik-och-foretagande/"
+      },
+      "category": "skatter",
+      "cost": {
+        "type": "intäktsminskning",
+        "period": "per_ar",
+        "msek_low": 8000,
+        "msek_base": 20000,
+        "msek_high": 45000,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Sänkt bolagsskatt och sänkta arbetsgivaravgifter. Löftet anger ingen nivå; basbeloppet motsvarar ett måttligt steg i vardera.",
+        "calculation": "Löftet har två delar och anger ingen nivå för någon av dem. Lönesumman i ekonomin är omkring 2 200 miljarder kronor per år, så en procentenhets sänkt arbetsgivaravgift kostar cirka 22 miljarder kronor. Bolagsskatten vilar på ett underlag kring 700–950 miljarder, så en procentenhet där kostar 7–9,5 miljarder. Basbeloppet 20 miljarder kronor per år motsvarar ungefär en halv procentenhet på arbetsgivaravgiften och två procentenheter på bolagsskatten. Spannet rymmer allt från en försiktig justering till den mer långtgående ambition partiet uttrycker.",
+        "confidence": 0.35
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0033",
+      "group_id": "g-fler-poliser",
+      "title": "Förstärka polisens resurser och öka polistillväxten",
+      "slug": "forstarka-polisens-resurser-och-oka-polistillvaxten",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Förstärka polisens resurser och öka polistillväxten.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/lag-och-ordning-2/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260625080229/https://moderaterna.se/var-politik/lag-och-ordning-2/"
+      },
+      "category": "rättsväsende",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 500,
+        "msek_base": 1500,
+        "msek_high": 3000,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Harmoniserat med andra partiers löften om fler poliser, som prissätts på samma grund.",
+        "calculation": "Löftet anger ingen siffra, så beloppet läggs på samma nivå som andra partiers löften om att förstärka polisen — samma politik ska kosta lika mycket oavsett vem som lovar den. Den nivån är 1 500 miljoner kronor per år. Spannet 500–3 000 miljoner speglar att löftet kan vara både mindre och mer ambitiöst än de jämförbara.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0034",
+      "group_id": null,
+      "title": "För att bekämpa den organiserade brottsligheten ska vi slå hårt mot det grova våldet, strypa den kriminella ekonomin och bryta",
+      "slug": "for-att-bekampa-den-organiserade-brottsligheten-ska-vi-sla-hart-mot-det-grova-valdet-strypa-den-kriminella-ekonomin-och-bryta",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "För att bekämpa den organiserade brottsligheten ska vi slå hårt mot det grova våldet, strypa den kriminella ekonomin och bryta rekryteringen av barn och unga till gängen.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/lag-och-ordning-2/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260625080229/https://moderaterna.se/var-politik/lag-och-ordning-2/"
+      },
+      "category": "rättsväsende",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Brett löfte över flera områden utan angiven nivå. Prissätts inte här; kostnaden ligger på partiets specifika löften.",
+        "calculation": "Löftet räknar upp tre mål — hårdare tag mot grovt våld, stopp för den kriminella ekonomin och färre barn som rekryteras — utan att ange någon åtgärd eller nivå. Partiets konkreta löften om polis, straff och förebyggande arbete prissätts var för sig; att också prissätta sammanfattningen skulle räkna samma politik två gånger.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0035",
+      "group_id": null,
+      "title": "Ge kommunerna kraftigt utökade verktyg för att hantera ordningsstörningar, mängdbrott och lokal otrygghet samt införa en ny yrkeskategori",
+      "slug": "ge-kommunerna-kraftigt-utokade-verktyg-for-att-hantera-ordningsstorningar-mangdbrott-och-lokal-otrygghet-samt-infora-en-ny-yrkeskategori",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Ge kommunerna kraftigt utökade verktyg för att hantera ordningsstörningar, mängdbrott och lokal otrygghet samt införa en ny yrkeskategori, säkerhetsvakter, som kan komplettera polis och ordningsvakter.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/lag-och-ordning-2/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260625080229/https://moderaterna.se/var-politik/lag-och-ordning-2/"
+      },
+      "category": "rättsväsende",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 100,
+        "msek_base": 600,
+        "msek_high": 1200,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Kostnad för den nya yrkeskategorin säkerhetsvakter plus central administration och tillsyn.",
+        "calculation": "Den nya yrkeskategorin antas omfatta 500–1 500 säkerhetsvakter till en kostnad av 0,6–0,8 miljoner kronor per tjänst och år, alltså 300–1 200 miljoner. Central administration och tillsyn läggs till med 20–200 miljoner. Basbeloppet är 600 miljoner motsvarar ungefär 1 000 vakter.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0036",
+      "group_id": null,
+      "title": "Skärpa straffen så att de speglar brottens allvar och flytta fokus från gärningsman till brottsoffer och samhällets behov av skydd",
+      "slug": "skarpa-straffen-sa-att-de-speglar-brottens-allvar-och-flytta-fokus-fran-garningsman-till-brottsoffer-och-samhallets-behov-av-skydd",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Skärpa straffen så att de speglar brottens allvar och flytta fokus från gärningsman till brottsoffer och samhällets behov av skydd.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/lag-och-ordning-2/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260625080229/https://moderaterna.se/var-politik/lag-och-ordning-2/"
+      },
+      "category": "rättsväsende",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 900,
+        "msek_base": 1800,
+        "msek_high": 3600,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Löftet är allmänt hållet ('skärpa straffen') och saknar konkreta lagförslag, vilket gör en exakt siffra omöjlig. Beloppet är satt genom jämförelse med summan av de konkreta straffskärpningsförslag andra partier lagt (tillsammans cirka 1,7 miljarder kronor per år). Moderaternas egna specifika straffskärpningar — avskaffad mängdrabatt, skärpt utvisning vid brott, kriminalisering av deepfake — räknas som separata poster för att undvika dubbelräkning. Osäkerheten är stor och spannet speglar den (belopp satt av granskare).",
+        "calculation": "Löftet är allmänt hållet — \"skärpa straffen\" — utan konkreta lagförslag, så någon exakt siffra går inte att räkna fram. Beloppet är i stället satt genom jämförelse: de konkreta straffskärpningar andra partier lagt kostar tillsammans omkring 1 700 miljoner kronor per år. Partiets egna specifika straffskärpningar — avskaffad mängdrabatt, skärpt utvisning vid brott, kriminalisering av bilder skapade med artificiell intelligens — räknas som egna löften och ingår inte här, så att samma politik inte räknas två gånger. Osäkerheten är stor och spannet speglar den.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0037",
+      "group_id": null,
+      "title": "Införa en förverkandefond där förverkade brottsvinster används till stöd för brottsoffer och brottsförebyggande arbete",
+      "slug": "infora-en-forverkandefond-dar-forverkade-brottsvinster-anvands-till-stod-for-brottsoffer-och-brottsforebyggande-arbete",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Införa en förverkandefond där förverkade brottsvinster används till stöd för brottsoffer och brottsförebyggande arbete.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/lag-och-ordning-2/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260625080229/https://moderaterna.se/var-politik/lag-och-ordning-2/"
+      },
+      "category": "rättsväsende",
+      "cost": {
+        "type": "utgift",
+        "period": "engang",
+        "msek_low": 1,
+        "msek_base": 5,
+        "msek_high": 20,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Fonden inrättas genom ett regelverk; utbetalningarna finansieras av de förverkade medlen och är ingen ny kostnad.",
+        "calculation": "Att inrätta fonden kräver ett regelverk — en promemoria för 1–3 miljoner kronor eller en statlig utredning för 5–10 miljoner — plus system för att hantera medlen, sammanlagt upp till 20 miljoner som engångskostnad. Utbetalningarna ur fonden är ingen ny statlig kostnad: de finansieras av pengar som förverkats från brottslingar.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0038",
+      "group_id": "g-m-vald-mot-kvinnor",
+      "title": "Våld mot kvinnor och barn ska bekämpas med samma kraft som gängkriminaliteten",
+      "slug": "vald-mot-kvinnor-och-barn-ska-bekampas-med-samma-kraft-som-gangkriminaliteten",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Våld mot kvinnor och barn ska bekämpas med samma kraft som gängkriminaliteten.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/lag-och-ordning-2/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260625080229/https://moderaterna.se/var-politik/lag-och-ordning-2/"
+      },
+      "category": "rättsväsende",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "granskare",
+        "basis_url": null,
+        "method_note": "Inriktning utan utpekad åtgärd och utan nivå. De konkreta åtgärderna prissätts på sina egna löften.",
+        "calculation": "Beloppet är noll. Citatet pekar varken ut en åtgärd eller en nivå: att våld mot kvinnor och barn ska bekämpas med samma kraft som gängkriminaliteten säger hur högt ambitionen ligger, inte vad den kostar. Ett sådant uttryck översätts aldrig till en siffra. Samma påstående ur en annan källa står på p-2026-0580 och är prissatt till noll där, och partiets konkreta åtgärder mot mäns våld mot kvinnor prissätts på sina egna löften.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0039",
+      "group_id": "g-m-vald-mot-kvinnor",
+      "title": "Kriminalisera ekonomiskt och psykiskt våld, förlänga maxtiden för kontaktförbud, införa brottet synnerligen grov våldtäkt med livstids",
+      "slug": "kriminalisera-ekonomiskt-och-psykiskt-vald-forlanga-maxtiden-for-kontaktforbud-infora-brottet-synnerligen-grov-valdtakt-med-livstids",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Kriminalisera ekonomiskt och psykiskt våld, förlänga maxtiden för kontaktförbud, införa brottet synnerligen grov våldtäkt med livstids fängelse i straffskalan, avskaffa patientavgiften för kvinnor som söker upp vård efter våldtäkt.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/lag-och-ordning-2/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260625080229/https://moderaterna.se/var-politik/lag-och-ordning-2/"
+      },
+      "category": "rättsväsende",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 60,
+        "msek_base": 130,
+        "msek_high": 350,
+        "basis": "granskare",
+        "basis_url": null,
+        "method_note": "Summan av de fyra åtgärder citatet räknar upp, var och en prissatt för sig. Alla antaganden är våra och står i uträkningen.",
+        "calculation": "Beloppet är summan av de fyra åtgärder citatet räknar upp. Antagandena är våra. Kriminalisering av ekonomiskt och psykiskt våld ger fler utredningar och rättegångar: 200–600 nya åtal per år à omkring 150 000 kronor, alltså 30–90 miljoner. Förlängd maxtid för kontaktförbud är ett beslut åklagaren redan fattar, bara för längre tid: omkring 5 miljoner. Brottet synnerligen grov våldtäkt träffar de grövsta fallen — få domar, längre tid: 10–30 extra fängelseår à 3 500 kronor per dygn, alltså 13–38 miljoner. Avskaffad patientavgift efter våldtäkt är den minsta och säkraste posten: 2 000 besök à 300 kronor, under en miljon. Sammantaget 60–350 miljoner kronor per år, med 130 som basbelopp. Det tidigare beloppet, 3 000, uppskattade hela områdets följdkostnader, inte åtgärderna.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    },
+    {
+      "id": "p-2026-0040",
+      "group_id": null,
+      "title": "Sverige ska ha ett starkt försvar som del av Natos gemensamma försvar och som har förmågan att avskräcka potentiella angripare",
+      "slug": "sverige-ska-ha-ett-starkt-forsvar-som-del-av-natos-gemensamma-forsvar-och-som-har-formagan-att-avskracka-potentiella-angripare",
+      "parties": [
+        "m"
+      ],
+      "person": null,
+      "quote": "Sverige ska ha ett starkt försvar som del av Natos gemensamma försvar och som har förmågan att avskräcka potentiella angripare.",
+      "date_stated": "2026-06-27",
+      "source": {
+        "url": "https://moderaterna.se/var-politik/forsvar-och-krisberedskap/",
+        "domain": "moderaterna.se",
+        "archive_url": "https://web.archive.org/web/20260625080229/https://moderaterna.se/var-politik/forsvar-och-krisberedskap/"
+      },
+      "category": "försvar",
+      "cost": {
+        "type": "utgift",
+        "period": "per_ar",
+        "msek_low": 0,
+        "msek_base": 0,
+        "msek_high": 0,
+        "basis": "llm_estimat",
+        "basis_url": null,
+        "method_note": "Riktningslöfte utan angiven nivå. Prissätts inte här; kostnaden ligger på partiets konkreta försvarslöften.",
+        "calculation": "Löftet beskriver ett starkt försvar inom Nato utan att ange någon nivå eller något årtal. Det tidigare beloppet byggde på en antagen höjning till två procent av BNP, en siffra som inte står i löftet. Partiets konkreta försvarslöften prissätts var för sig.",
+        "confidence": 0.4
+      },
+      "financing_claimed": {
+        "described": false,
+        "summary": null,
+        "msek": null
+      },
+      "comparisons": [],
+      "quip": "",
+      "status": "aktiv"
+    }
+  ]
+}
