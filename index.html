@@ -6,7 +6,32 @@
     <title>valtris — Tetris med vallöften</title>
   </head>
   <body>
-    <main id="app"></main>
+    <main id="app">
+      <header class="vt-head">
+        <h1>valtris</h1>
+        <p class="vt-sub">Tetris med partiernas riktiga vallöften. Partiet på klossen är kosmetiskt — det styr inget.</p>
+      </header>
+      <section class="vt-game">
+        <canvas id="board" width="300" height="600" aria-label="Spelplan"></canvas>
+        <aside class="vt-side">
+          <div id="next" aria-label="Nästa kloss"></div>
+          <dl class="vt-stats">
+            <dt>Poäng</dt><dd id="score">0</dd>
+            <dt>Nivå</dt><dd id="level">1</dd>
+            <dt>Bästa</dt><dd id="highscore">—</dd>
+          </dl>
+          <div id="status" class="vt-status" role="status" aria-live="polite"></div>
+        </aside>
+      </section>
+      <section id="detail" class="vt-detail" hidden></section>
+      <details class="vt-method">
+        <summary>Så här spelas och mäts poängen</summary>
+        <div id="method-text"></div>
+      </details>
+      <footer class="vt-foot">
+        Data från <a href="https://utlovat.se">utlovat.se</a> (CC-BY-4.0). valtris är ett oberoende projekt utan partikoppling.
+      </footer>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
