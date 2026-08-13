@@ -42,15 +42,22 @@
   margin-top: 0.5rem;
 }
 
-/* ── Spelområde: bräde + sidopanel ── */
+/* ── Spelområde: bräde dominerar, sidopanel liten och kompakt ──
+ * Brädet är det stora, centrala elementet. Inforutan tar bara den plats dess
+ * innehåll behöver (aldrig 1fr) så den inte dominerar. */
 .vt-game {
   display: grid;
-  grid-template-columns: auto minmax(220px, 1fr);
-  gap: clamp(1rem, 3vw, 2rem);
+  grid-template-columns: auto auto;
+  justify-content: center;
   align-items: start;
+  gap: clamp(1rem, 3vw, 2rem);
 }
 @media (max-width: 720px) {
-  .vt-game { grid-template-columns: 1fr; }
+  /* Smal skärm: inforutan lägger sig under brädet; brädet förblir prominent. */
+  .vt-game {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
 }
 
 .vt-board-wrap {
@@ -66,50 +73,52 @@
   height: auto;
 }
 
-/* ── Sidopanel: nästa kloss + poäng ── */
+/* ── Sidopanel: liten, kompakt. Tar bara platsen sitt innehåll behöver. ── */
 .vt-side {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
+  width: min(11rem, 90vw);   /* trång spalt — aldrig 1fr, aldrig dominera */
 }
 .vt-panel {
   border: var(--linje-sektion);
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   background: var(--papper);
 }
 .vt-panel-title {
   font-family: var(--font-display);
-  font-size: var(--steg-1);
+  font-size: var(--steg-0);
   text-transform: uppercase;
   letter-spacing: var(--sparrning-display);
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.2rem;
   border-bottom: var(--linje-under);
 }
 
-/* Nästa-kloss: partifärgad stämpel i profil (endast kosmetiskt) */
-.vt-next { min-height: 64px; }
+/* Nästa-kloss: liten partifärgad plupp (kosmetiskt), inte ett stort kort. */
+.vt-next { min-height: 0; }
 .vt-piece {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding: 0.5rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.4rem;
   border: 2px solid var(--svarta);
   background: var(--papper);
   /* partifärg läggs på som inline style av ui.ts (colorOf) */
 }
 .vt-piece-swatch {
   display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 0.9rem;
+  height: 0.9rem;
   border: 1px solid var(--svarta);
   /* partifärg via inline style */
 }
 .vt-abbr {
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: var(--steg-1);
+  font-size: var(--steg-0);
   letter-spacing: var(--sparrning-etikett);
+  line-height: 1;
   /* text-färg via inline style (color_text) för kontrast */
 }
 .vt-cat {
@@ -117,6 +126,7 @@
   font-size: var(--steg--1);
   color: var(--dis);
   text-transform: lowercase;
+  line-height: 1;
 }
 
 /* Poäng-stat: Mono, tabulär */
@@ -195,36 +205,39 @@
 }
 .vt-foot a { color: var(--svarta); }
 
-/* ── Game-over-overlay: papperskort, centrerat över brädet ──
- * Container är positionerat över brädet av main.ts (initierar vid start).
+/* ── Game-over-modal: FULLSKÄRM över hela viewporten ──
+ * Tidigare satt overlayen absolut inuti brädet och ritade kortet ovanpå
+ * spelplanen — löftestexten blev oläslig. Nu är den position: fixed mot
+ * viewporten med en papperskulört backdrop och ett centrerat stort kort.
  * Själva kortet ritas i utlovats stil: papper, 2px svart ram, radius 0,
  * Anton-versal rubrik, Mono stats, Source Serif löftesblock. */
 .vt-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(246, 243, 236, 0.92);  /* papper med svag opacitet så brädet skymtar */
-  /* opacity-backdrop utan externa beroenden; papper är konceptet */
+  padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem);
+  background: rgba(246, 243, 236, 0.94);  /* papperskulört fullskärmsbackdrop */
 }
 .vt-overlay[hidden] { display: none; }
 
 .vt-card {
-  width: min(92%, 420px);
-  max-height: 96%;
+  width: min(90vw, 40rem);
+  max-height: 92vh;
   overflow-y: auto;
   border: 2px solid var(--svarta);
   background: var(--papper);
-  padding: 1.25rem 1.25rem 1rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .vt-card-title {
   font-family: var(--font-display);
-  font-size: var(--steg-3);
+  font-size: var(--steg-4);
   line-height: var(--radavstand-display);
   text-transform: uppercase;
   letter-spacing: var(--sparrning-display);
@@ -241,13 +254,13 @@
   font-variant-numeric: tabular-nums lining-nums;
 }
 .vt-card-stats dt {
-  font-size: var(--steg--1);
+  font-size: var(--steg-0);
   letter-spacing: var(--sparrning-etikett);
   text-transform: uppercase;
   color: var(--dis);
 }
 .vt-card-stats dd {
-  font-size: var(--steg-1);
+  font-size: var(--steg-2);
   color: var(--svarta);
   text-align: right;
 }
@@ -264,7 +277,7 @@
 }
 .vt-promise-rubrik {
   font-family: var(--font-display);
-  font-size: var(--steg-1);
+  font-size: var(--steg-2);
   line-height: 1.15;
   text-transform: uppercase;
   letter-spacing: var(--sparrning-display);
@@ -307,7 +320,7 @@
 .vt-promise-quote {
   font-family: var(--font-brod);
   font-style: italic;
-  font-size: var(--steg-0);
+  font-size: var(--steg-1);
   line-height: var(--radavstand-brod);
   color: var(--grafit);
   /* Hängande citattecken utan att vara `verbatim`-mekanik — neutrala nålar. */
@@ -350,14 +363,15 @@
 }
 
 /* ── Startskärm ──
- * Papperskort i utlovats stil: Anton-versal titel, Mono etiketter, Source Serif
- * brödtext, 2px svart ram, radius 0. Fullskärmsoverlay (Task 3 förfinar). */
+ * Fullskärmsmodal i samma kortstil som game-over: papperskulört backdrop,
+ * centrerat stort kort (max min(90vw, 40rem)), utlovats profil — Anton-versal
+ * titel, Mono etiketter, Source Serif brödtext, 2px svart ram, radius 0. */
 .vt-start {
   position: fixed;
   inset: 0;
   z-index: 5;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   overflow-y: auto;
   padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem);
@@ -365,7 +379,9 @@
 }
 .vt-start[hidden] { display: none; }
 .vt-start-card {
-  width: min(100%, 46rem);
+  width: min(90vw, 40rem);
+  max-height: 92vh;
+  overflow-y: auto;
   border: var(--linje-tabell-ytter);
   background: var(--papper);
   padding: clamp(1.25rem, 3vw, 2rem);
