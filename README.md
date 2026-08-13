@@ -19,3 +19,8 @@ utlovats innehåll. Ingen finansiering eller koppling till något parti.
 ## Stack
 
 TypeScript + HTML Canvas + Vite. Ren statisk sajt avsedd för GitHub Pages.
+
+## Licens
+
+valtris egen kod är licensierad under Apache-2.0 (se `LICENSE`). Datat kommer
+från utlovat.se under CC-BY-4.0.
