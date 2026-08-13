@@ -333,3 +333,179 @@
   letter-spacing: var(--sparrning-etikett);
   text-transform: uppercase;
 }
+
+/* "Tillbaka till start"-länkknappen i game-over-kortet — ser ut som en
+ * etikettlänk, inte en plattknapp, så den inte konkurrerar med Retur. */
+.vt-link-btn {
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--svarta);
+  background: none;
+  border: none;
+  border-bottom: 1px solid currentColor;
+  padding: 0 0 1px;
+  cursor: pointer;
+}
+
+/* ── Startskärm ──
+ * Papperskort i utlovats stil: Anton-versal titel, Mono etiketter, Source Serif
+ * brödtext, 2px svart ram, radius 0. Fullskärmsoverlay (Task 3 förfinar). */
+.vt-start {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem);
+  background: rgba(246, 243, 236, 0.96);
+}
+.vt-start[hidden] { display: none; }
+.vt-start-card {
+  width: min(100%, 46rem);
+  border: var(--linje-tabell-ytter);
+  background: var(--papper);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.vt-start-title {
+  font-family: var(--font-display);
+  font-size: var(--steg-5);
+  line-height: 1;
+  letter-spacing: var(--sparrning-display);
+  text-transform: lowercase;  /* valtris är ett ord, inte ett utrop */
+  color: var(--svarta);
+  margin-top: 0.25rem;
+}
+.vt-start-howto {
+  font-family: var(--font-brod);
+  font-size: var(--steg-0);
+  line-height: var(--radavstand-brod);
+  color: var(--grafit);
+  max-width: 62ch;
+}
+.vt-start-howto strong { color: var(--svarta); font-weight: 700; }
+
+/* Legender: två tydligt åtskilda kort bredvid varandra ( Responsiv: under på smal skärm). */
+.vt-legends {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 640px) {
+  .vt-legends { grid-template-columns: 1fr; }
+}
+.vt-legend {
+  border: var(--linje-sektion);
+  padding: 0.75rem 0.9rem;
+  background: var(--papper);
+}
+.vt-legend-title {
+  font-family: var(--font-display);
+  font-size: var(--steg-1);
+  text-transform: uppercase;
+  letter-spacing: var(--sparrning-display);
+  color: var(--svarta);
+  padding-bottom: 0.3rem;
+  border-bottom: var(--linje-under);
+  margin-bottom: 0.4rem;
+}
+.vt-legend-sub {
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+  letter-spacing: var(--sparrning-etikett);
+  color: var(--dis);
+  text-transform: none;
+  font-weight: 400;
+}
+.vt-legend-note {
+  font-family: var(--font-brod);
+  font-size: var(--steg--1);
+  line-height: 1.45;
+  color: var(--dis);
+  margin-bottom: 0.5rem;
+}
+.vt-legend-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.vt-legend-row {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+  color: var(--svarta);
+}
+.vt-legend-glyph {
+  display: inline-flex;
+  line-height: 0;
+}
+.vt-glyph { display: block; }
+.vt-legend-form {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--steg-0);
+  color: var(--svarta);
+  min-width: 1.2em;
+  text-align: center;
+}
+.vt-legend-label {
+  color: var(--grafit);
+  text-transform: lowercase;
+}
+
+/* Partifärgsrad: en färgad plupp med stämplad förkortning (stampColorOn) + namn. */
+.vt-legend-party-row {
+  grid-template-columns: auto 1fr;
+}
+.vt-legend-swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 1.5rem;
+  border: 2px solid var(--svarta);
+  /* partifärg sätts inline av ui.ts */
+}
+.vt-legend-abbr {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--steg--1);
+  letter-spacing: var(--sparrning-etikett);
+  /* stämpelfärg inline (stampColorOn) */
+}
+
+/* Start-knappen: platt i utlovats stil, gul signalfärg sparsamt. */
+.vt-start-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+.vt-start-btn {
+  font-family: var(--font-display);
+  font-size: var(--steg-2);
+  text-transform: uppercase;
+  letter-spacing: var(--sparrning-display);
+  line-height: 1;
+  color: var(--svarta);
+  background: var(--papper);
+  border: 2px solid var(--svarta);
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+}
+.vt-start-btn:hover:not(:disabled) {
+  background: var(--gul);
+}
+.vt-start-btn:disabled {
+  color: var(--dis);
+  cursor: default;
+}
+

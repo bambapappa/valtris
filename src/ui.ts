@@ -1,5 +1,5 @@
-import type { GamePiece, PartyData } from './types';
-import { stampColorOn } from './profile';
+import type { GamePiece, PartyData, Tetromino } from './types';
+import { stampColorOn, SVARTA, PAPPER } from './profile';
 
 /**
  * UI-hjälpar för valtris. All DOM-uppdatering samlad här så main.ts bara
@@ -121,7 +121,7 @@ export function showGameOver(
       <p class="vt-promise-source">Källa: ${sourceHtml}</p>
     </div>
 
-    <p class="vt-card-foot">Retur = spela igen</p>
+    <p class="vt-card-foot">Retur = spela igen · <button id="back-to-start" class="vt-link-btn" type="button">tillbaka till start</button></p>
   </div>`;
   overlay.hidden = false;
 }
@@ -159,3 +159,79 @@ function escapeHtml(s: string): string {
 function escapeAttr(s: string): string {
   return escapeHtml(s);
 }
+
+/* ── Startskärm: legender ──
+ * Två tydligt åtskilda legender. (1) Form = kategori: statisk, fast map från
+ * löfteskategori till tetrominoform — det är självaste styrspelet. (2) Färg =
+ * parti: datadriven (byggd från parties.json via api), kosmetisk, påverkar inget.
+ * Förväxlingen är det vi motverkar: formen styr, färgen visar bara. */
+
+/** Form-ägd kategori→tetromino-map. Spegel av src/mapping.ts, hållen här för
+ * att legenden ska vara deklarativ och läsbart lokaliserad. Två kategorier
+ * delar form medvetet (välfärd & utbildning → I; försvar & infrastruktur → J). */
+const CATEGORY_FORM_ROWS: Array<{ categories: string[]; shape: Tetromino }> = [
+  { categories: ['välfärd', 'utbildning'], shape: 'I' },
+  { categories: ['skatter'], shape: 'L' },
+  { categories: ['klimat-miljö'], shape: 'T' },
+  { categories: ['rättsväsende'], shape: 'Z' },
+  { categories: ['migration'], shape: 'S' },
+  { categories: ['övrigt'], shape: 'O' },
+  { categories: ['försvar', 'infrastruktur'], shape: 'J' },
+];
+
+/** Rotation-0 cell-offsets (4×4 bounding box) per form, för glyph-ritning.
+ * Speglar src/engine.ts ROTATIONS[shape][0]. */
+const SHAPE_GLYPH_CELLS: Record<Tetromino, Array<[number, number]>> = {
+  I: [[1, 0], [1, 1], [1, 2], [1, 3]],
+  O: [[0, 1], [0, 2], [1, 1], [1, 2]],
+  T: [[0, 1], [1, 0], [1, 1], [1, 2]],
+  S: [[0, 1], [0, 2], [1, 0], [1, 1]],
+  Z: [[0, 0], [0, 1], [1, 1], [1, 2]],
+  J: [[0, 0], [1, 0], [1, 1], [1, 2]],
+  L: [[0, 2], [1, 0], [1, 1], [1, 2]],
+};
+
+/** Liten inline-SVG-glyph av en tetrominoform (papper på svarta linjer), i
+ * profilens kantiga stil — radius 0, 2px svart ram. Neutral färg (ej partifärg)
+ * eftersom formen är styrspelet, inte partiet. */
+export function shapeGlyph(shape: Tetromino, size = 5): string {
+  const cells = SHAPE_GLYPH_CELLS[shape];
+  const dim = size * 4;
+  const rects = cells
+    .map(([r, c]) => `<rect x="${c * size}" y="${r * size}" width="${size}" height="${size}" fill="${PAPPER}" stroke="${SVARTA}" stroke-width="0.6"/>`)
+    .join('');
+  return `<svg class="vt-glyph" width="${dim}" height="${dim}" viewBox="0 0 ${dim} ${dim}" aria-hidden="true">${rects}</svg>`;
+}
+
+/** Renderar den statiska kategori→form-legenden. Fast map; inte partibunden. */
+export function renderCategoryLegend() {
+  const el = document.getElementById('legend-category');
+  if (!el) return;
+  el.innerHTML = CATEGORY_FORM_ROWS.map((row) => {
+    const label = row.categories.length > 1 ? row.categories.join(' · ') : row.categories[0]!;
+    return `<li class="vt-legend-row">
+      <span class="vt-legend-glyph">${shapeGlyph(row.shape)}</span>
+      <span class="vt-legend-form">${escapeHtml(row.shape)}</span>
+      <span class="vt-legend-label">${escapeHtml(label)}</span>
+    </li>`;
+  }).join('');
+}
+
+/** Renderar partifärgslegenden DATADRIVET ur `parties` (från parties.json via
+ * api). Inte hårdkodad — om utlovat ändrar en partifärg följer legenden med.
+ * Förkortningen stämplas via delad `stampColorOn(party.color)` så kontrasten
+ * är densamma som på klossarna. Kosmetisk, påverkar inget styrspel. */
+export function renderPartyLegend(parties: PartyData[]) {
+  const el = document.getElementById('legend-party');
+  if (!el) return;
+  el.innerHTML = parties.map((p) => {
+    const fg = stampColorOn(p.color);
+    return `<li class="vt-legend-row vt-legend-party-row">
+      <span class="vt-legend-swatch" style="background:${escapeAttr(p.color)}">
+        <span class="vt-legend-abbr" style="color:${escapeAttr(fg)}">${escapeHtml(p.code.toUpperCase())}</span>
+      </span>
+      <span class="vt-legend-label">${escapeHtml(p.name)}</span>
+    </li>`;
+  }).join('');
+}
+

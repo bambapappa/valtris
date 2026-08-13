@@ -15,7 +15,43 @@
         <p class="vt-sub">Tetris med partiernas riktiga vallöften. Partiet på klossen är kosmetiskt — det styr inget.</p>
       </header>
 
-      <section class="vt-game">
+      <section id="start-screen" class="vt-start" aria-label="Startskärm">
+        <div class="vt-start-card">
+          <p class="vt-eyebrow">utlovat.se × tetris</p>
+          <h2 class="vt-start-title">valtris</h2>
+
+          <div class="vt-start-howto">
+            <p>
+              Klossarna är partiernas verkliga vallöften. <strong>Vänster/höger</strong> flyttar,
+              <strong>upp</strong> roterar, <strong>ner</strong> tappar mjukt och
+              <strong>mellanslag</strong> tappar hårt. Fyllda rader rensas.
+              <strong>Kostnaden</strong> är din poäng — större löften ger mer.
+              Tappar du över toppen är spelet slut.
+            </p>
+          </div>
+
+          <div class="vt-legends">
+            <section class="vt-legend vt-legend--form" aria-label="Kategori till form">
+              <h3 class="vt-legend-title">Form = kategori <span class="vt-legend-sub">(styrspelet)</span></h3>
+              <p class="vt-legend-note">Klossens form avgörs av löftets kategori. Den här kartan är fast.</p>
+              <ul id="legend-category" class="vt-legend-list"></ul>
+            </section>
+
+            <section class="vt-legend vt-legend--party" aria-label="Partifärger">
+              <h3 class="vt-legend-title">Färg = parti <span class="vt-legend-sub">(endast kosmetiskt)</span></h3>
+              <p class="vt-legend-note">Parti färgar bara klossen — det påverkar inte poäng eller form.</p>
+              <ul id="legend-party" class="vt-legend-list"></ul>
+            </section>
+          </div>
+
+          <div class="vt-start-actions">
+            <button id="start-btn" class="vt-start-btn" type="button" disabled>Laddar löften…</button>
+          </div>
+          <p id="start-status" class="vt-status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="vt-game" hidden>
         <div class="vt-board-wrap">
           <canvas id="board" width="300" height="600" aria-label="Spelplan"></canvas>
           <div id="overlay" class="vt-overlay" hidden></div>

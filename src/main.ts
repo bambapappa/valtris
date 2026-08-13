@@ -5,7 +5,7 @@ import { computeMetrics, drawScene } from './render';
 import { lockScore, lineScore } from './score';
 import { colorForParty } from './mapping';
 import { loadStore, saveStore, bestOf, addScore } from './highscore';
-import { setStats, showNext, showDetail, showStatus, showGameOver, hideOverlay, setMethodText } from './ui';
+import { setStats, showNext, showDetail, showStatus, showGameOver, hideOverlay, setMethodText, renderCategoryLegend, renderPartyLegend } from './ui';
 import type { GamePiece, PartyData, PartyCode } from './types';
 
 // COLS/ROWS are re-exported by main only for potential downstream use; keep the
@@ -19,6 +19,8 @@ let active = spawn({ id:'x', title:'', party:'s', category:'övrigt', msek_base:
 let nextPiece: GamePiece | null = null;
 let score = 0, level = 1, lines = 0, killer: GamePiece | null = null;
 let over = false;
+let started = false;       // har användaren tryckt Starta? (stänger av loopen före start)
+let rafId: number | null = null;
 const store = loadStore();
 
 // Pieces currently locked on the board, keyed by pieceId. Used to honestly sum
@@ -118,15 +120,19 @@ function endGame(k: GamePiece) {
 }
 
 function step(now: number) {
-  if (!over) {
+  if (started && !over) {
     if (now - lastTick > tickInterval()) {
       lastTick = now;
       const down = tryMove(board, active, 0, 1);
       if (down) active = down; else lockActive();
     }
   }
-  draw();
-  requestAnimationFrame(step);
+  if (started) draw();
+  rafId = requestAnimationFrame(step);
+}
+
+function stopLoop() {
+  if (rafId != null) { cancelAnimationFrame(rafId); rafId = null; }
 }
 
 function reset() {
@@ -135,7 +141,8 @@ function reset() {
 }
 
 window.addEventListener('keydown', (e) => {
-  if (over) { if (e.key === 'Enter') reset(); return; }
+  if (!started) return;                       // ignore keys on start screen
+  if (over) { if (e.key === 'Enter') beginGame(); return; }  // Enter = spela igen
   switch (e.key) {
     case 'ArrowLeft': active = tryMove(board, active, -1, 0) ?? active; break;
     case 'ArrowRight': active = tryMove(board, active, 1, 0) ?? active; break;
@@ -153,8 +160,61 @@ if (nextEl) {
   nextEl.addEventListener('mouseleave', () => showDetail(null, parties));
 }
 
-async function start() {
+/* ── Startskärmflöde ──
+ * Ingen autostart. Vid load: hämta data i bakgrunden och rita legender, men
+ * starta INTE spel-loopen förrän användaren trycker Starta. Begin/return togglar
+ * `started` och synlighet mellan #start-screen och .vt-game. */
+
+function setStartBtn(label: string, disabled: boolean) {
+  const btn = document.getElementById('start-btn') as HTMLButtonElement | null;
+  if (!btn) return;
+  btn.textContent = label;
+  btn.disabled = disabled;
+}
+
+function showStartScreen() {
+  started = false;
+  over = false;
+  stopLoop();
+  hideOverlay();
+  const ss = document.getElementById('start-screen');
+  const game = document.querySelector<HTMLElement>('.vt-game');
+  if (ss) ss.hidden = false;
+  if (game) game.hidden = true;
+}
+
+/** Börja ett nytt spel (Starta-knappen, eller Retur på game-over). Göm
+ * startskärmen, visa spelet, nollställ och starta loopen. */
+function beginGame() {
+  if (!pool) { setStartStatus('Väntar på data från utlovat.se…'); return; }
+  const ss = document.getElementById('start-screen');
+  const game = document.querySelector<HTMLElement>('.vt-game');
+  if (ss) ss.hidden = true;
+  if (game) game.hidden = false;
+  started = true;
+  reset();
+  if (rafId == null) rafId = requestAnimationFrame(step);
+}
+
+function setStartStatus(msg: string) {
+  const el = document.getElementById('start-status');
+  if (el) el.textContent = msg;
+}
+
+document.getElementById('start-btn')?.addEventListener('click', () => {
+  if (pool) beginGame();
+});
+
+// Game-over-overlay: "tillbaka till start" återvänder till startskärmen.
+document.getElementById('overlay')?.addEventListener('click', (e) => {
+  const t = e.target as HTMLElement | null;
+  if (t && t.closest('#back-to-start')) showStartScreen();
+});
+
+async function load() {
   setMethodText();
+  renderCategoryLegend();          // statisk kategori→form-legend
+  setStartStatus('Hämtar löften från utlovat.se…');
   showStatus('Hämtar löften från utlovat.se…');
   try {
     const { promises, parties: p } = await fetchGameInput();
@@ -162,13 +222,16 @@ async function start() {
     const pieces = toGamePieces(promises);
     if (pieces.length === 0) throw new Error('no active promises');
     pool = new PromisePool(pieces);
+    renderPartyLegend(parties);    // datadriven partifärgslegend
+    setStartStatus('');
     showStatus('');
-    reset();
-    requestAnimationFrame(step);
+    setStartBtn('Starta', false);
   } catch (err) {
-    showStatus('Kunde inte hämta löften från utlovat.se just nu — försök igen.');
+    setStartStatus('Kunde inte hämta löften från utlovat.se just nu — försök igen.');
+    showStatus('Kunde inte hämta löften från utlovat.se just nu.');
     console.error(err);
   }
 }
 
-start();
+load();
+
