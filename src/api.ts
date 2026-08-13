@@ -25,6 +25,7 @@ export function validatePromises(raw: any): PromiseData[] {
     .map((p: any) => ({
       id: p.id,
       title: typeof p.title === 'string' ? p.title : '',
+      slug: typeof p.slug === 'string' ? p.slug : '',
       parties: Array.isArray(p.parties) ? p.parties.map(asParty) : [],
       category: asCategory(p.category),
       status: typeof p.status === 'string' ? p.status : 'aktiv',
@@ -55,6 +56,7 @@ export function toGamePieces(promises: PromiseData[]): GamePiece[] {
     .map((p) => ({
       id: p.id,
       title: p.title,
+      slug: p.slug,
       party: p.parties[0] ?? 's',
       category: p.category,
       msek_base: p.cost.msek_base,

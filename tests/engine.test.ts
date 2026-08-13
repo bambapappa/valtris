@@ -7,7 +7,7 @@ import {
 import type { GamePiece } from '../src/types';
 
 function piece(shape: GamePiece['shape']): GamePiece {
-  return { id: 'p-1', title: 'x', party: 's', category: 'övrigt', msek_base: 0, shape, quote: '', source: { url: '', domain: '' } };
+  return { id: 'p-1', title: 'x', slug: '', party: 's', category: 'övrigt', msek_base: 0, shape, quote: '', source: { url: '', domain: '' } };
 }
 
 describe('board + placement', () => {

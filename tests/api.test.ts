@@ -66,6 +66,18 @@ describe('validation', () => {
     expect(first.source.url).toBe(raw.source.url);
     expect(first.source.domain).toBe(raw.source.domain);
   });
+  it('toGamePieces preserves slug so game-over can link to utlovat.se', () => {
+    const pieces = toGamePieces(validatePromises(promisesRaw));
+    expect(pieces.length).toBeGreaterThan(0);
+    for (const p of pieces) {
+      expect(typeof p.slug).toBe('string');
+      expect(p.slug.length).toBeGreaterThan(0);
+    }
+    // Spot-check the first record against the fixture's slug.
+    const first = pieces[0]!;
+    const raw = validatePromises(promisesRaw)[0]!;
+    expect(first.slug).toBe(raw.slug);
+  });
   it('validateParties keeps color_text for stamp contrast', () => {
     const parties = validateParties(partiesRaw);
     expect(parties.length).toBeGreaterThan(0);

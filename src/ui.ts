@@ -95,6 +95,7 @@ export function showGameOver(
   const sourceHtml = killer.source?.url
     ? `<a href="${escapeAttr(killer.source.url)}" rel="nofollow noopener" target="_blank">${escapeHtml(sourceDomain)}</a>`
     : escapeHtml(sourceDomain);
+  const utlovatUrl = `https://utlovat.se/lofte/${encodeURIComponent(killer.id)}/${encodeURIComponent(killer.slug)}`;
 
   overlay.innerHTML = `<div class="vt-card" role="dialog" aria-labelledby="vo-title">
     <h2 id="vo-title" class="vt-card-title">Spelet slut</h2>
@@ -119,6 +120,8 @@ export function showGameOver(
       </div>
       ${quoteHtml}
       <p class="vt-promise-source">Källa: ${sourceHtml}</p>
+      <p class="vt-promise-note">Det här löftet låstes sist och fyllde brädet — det blev det som gav dig game over.</p>
+      <p class="vt-promise-link"><a href="${escapeAttr(utlovatUrl)}" target="_blank" rel="noopener">Läs löftet på utlovat.se →</a></p>
     </div>
 
     <p class="vt-card-foot">Retur = spela igen · <button id="back-to-start" class="vt-link-btn" type="button">tillbaka till start</button></p>

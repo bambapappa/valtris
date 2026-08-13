@@ -15,7 +15,7 @@ void COLS; void ROWS;
 let parties: PartyData[] = [];
 let pool: PromisePool | null = null;
 let board = createBoard();
-let active = spawn({ id:'x', title:'', party:'s', category:'övrigt', msek_base:0, shape:'O', quote:'', source:{url:'',domain:''} });
+let active = spawn({ id:'x', title:'', slug:'', party:'s', category:'övrigt', msek_base:0, shape:'O', quote:'', source:{url:'',domain:''} });
 let nextPiece: GamePiece | null = null;
 let score = 0, level = 1, lines = 0, killer: GamePiece | null = null;
 let over = false;

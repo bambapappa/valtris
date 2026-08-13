@@ -16,6 +16,7 @@ export interface PromiseSource {
 export interface PromiseData {
   id: string;
   title: string;
+  slug: string;
   parties: PartyCode[];
   category: Category;
   status: string;
@@ -37,6 +38,7 @@ export interface PartyData {
 export interface GamePiece {
   id: string;
   title: string;
+  slug: string;
   party: PartyCode;
   category: Category;
   msek_base: number;
