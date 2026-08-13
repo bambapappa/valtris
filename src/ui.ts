@@ -1,4 +1,5 @@
 import type { GamePiece, PartyData } from './types';
+import { stampColorOn } from './profile';
 
 /**
  * UI-hjälpar för valtris. All DOM-uppdatering samlad här så main.ts bara
@@ -29,8 +30,10 @@ export function setStats(score: number, level: number, lines: number, high: numb
 }
 
 /**
- * Nästa-kloss i profil: partifärgad stämpel (plupp + förkortning i color_text)
- * + kategori. Visar INGEN poängsammanställning i förväg — neutralitet.
+ * Nästa-kloss i profil: partifärgad stämpel (plupp + förkortning). Stämpelfärgen
+ * väljs luminansbaserat via `stampColorOn(party.color)` så förkortningen är
+ * läslig för alla 8 partier — inte `color_text`, som för 5 av 8 partier är
+ * identisk med fillen. Visar INGEN poängsammanställning i förväg — neutralitet.
  */
 export function showNext(piece: GamePiece | null, parties: PartyData[]) {
   const el = document.getElementById('next');
@@ -38,7 +41,7 @@ export function showNext(piece: GamePiece | null, parties: PartyData[]) {
   if (!piece) { el.textContent = ''; return; }
   const party = parties.find((p) => p.code === piece.party);
   const bg = party?.color ?? '#888888';
-  const fg = party?.color_text ?? '#111111';
+  const fg = stampColorOn(bg);
   el.innerHTML = `<div class="vt-piece" style="background:${bg}">
     <span class="vt-abbr" style="color:${fg}">${piece.party.toUpperCase()}</span>
     <span class="vt-cat" style="color:${fg};opacity:0.85">${piece.category}</span>
@@ -83,7 +86,7 @@ export function showGameOver(
   const party = parties.find((p) => p.code === killer.party);
   const partyName = party?.name ?? killer.party;
   const partyColor = party?.color ?? '#888888';
-  const partyText = party?.color_text ?? '#111111';
+  const partyText = stampColorOn(partyColor);
   const cost = `${fmt(killer.msek_base)} msek/år`;
   const quoteHtml = killer.quote
     ? `<p class="vt-promise-quote">${escapeHtml(killer.quote)}</p>`

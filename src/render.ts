@@ -1,6 +1,6 @@
 import { COLS, ROWS, cellsOf } from './engine';
 import type { Board, ActivePiece } from './engine';
-import { SVARTA, LINJE_SVAG, FONT_MONO } from './profile';
+import { SVARTA, LINJE_SVAG, FONT_MONO, stampColorOn } from './profile';
 
 export interface ViewMetrics {
   cell: number;
@@ -32,9 +32,6 @@ export function cellRect(
   };
 }
 
-/** Default text color when no textColorOf is supplied — tryckbläck. */
-const DEFAULT_TEXT_COLOR = SVARTA;
-
 function fillCell(
   ctx: CanvasRenderingContext2D,
   m: ViewMetrics,
@@ -42,7 +39,6 @@ function fillCell(
   col: number,
   party: string,
   color: string,
-  textColor: string,
 ): void {
   const r = cellRect(m, row, col);
   // Partifärg (dataviz — klossen).
@@ -52,9 +48,11 @@ function fillCell(
   ctx.strokeStyle = 'rgba(0,0,0,0.25)';
   ctx.lineWidth = 1;
   ctx.strokeRect(r.x + 0.5, r.y + 0.5, r.w - 1, r.h - 1);
-  // Stämpel: partiförkortning i Mono, centrerad, i partiets kontrasttextfärg.
+  // Stämpel: partiförkortning i Mono, centrerad. Färgen väljs luminansbaserat
+  // mot cellens partifärg (stampColorOn) — inte color_text, som för 5 av 8
+  // partier är identisk med fillen (osynlig stämpel).
   const label = party.toUpperCase();
-  ctx.fillStyle = textColor;
+  ctx.fillStyle = stampColorOn(color);
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.font = `${Math.round(m.cell * 0.42)}px ${FONT_MONO}`;
@@ -66,9 +64,8 @@ function fillCell(
  * målar papper), synlig 2px SVARTA brädesram, svaga LINJE_SVAG rutlinjer,
  * och partistämpel i Mono per fylld cell.
  *
- * `textColorOf` mappar partikod → partiets `color_text` (kontrast mot
- * partifärgen). Om den utelämnas faller stämpeln tillbaka på SVARTA så
- * befintliga anropare/testare inte går sönder.
+ * Stämpelfärgen väljs per cell via `stampColorOn(cellens partifärg)` så
+ * förkortningen är läslig för alla 8 partier (luminansbaserat, neutralt).
  */
 export function drawScene(
   ctx: CanvasRenderingContext2D,
@@ -76,7 +73,6 @@ export function drawScene(
   board: Board,
   active: ActivePiece | null,
   colorOf: (party: string) => string,
-  textColorOf: (party: string) => string = () => DEFAULT_TEXT_COLOR,
 ): void {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
@@ -105,14 +101,14 @@ export function drawScene(
     for (let c = 0; c < COLS; c++) {
       const cell = board[r]![c];
       if (cell) {
-        fillCell(ctx, m, r, c, cell.party, cell.color || colorOf(cell.party), textColorOf(cell.party));
+        fillCell(ctx, m, r, c, cell.party, cell.color || colorOf(cell.party));
       }
     }
   }
   if (active) {
     for (const [r, c] of cellsOf(active)) {
       if (r >= 0 && r < ROWS && c >= 0 && c < COLS) {
-        fillCell(ctx, m, r, c, active.game.party, colorOf(active.game.party), textColorOf(active.game.party));
+        fillCell(ctx, m, r, c, active.game.party, colorOf(active.game.party));
       }
     }
   }

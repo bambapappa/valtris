@@ -31,14 +31,11 @@ function tickInterval() { return Math.max(120, 800 - (level - 1) * 60); }
 let lastTick = 0;
 
 function colorOf(p: string) { return colorForParty(p as PartyCode, parties); }
-function textColorOf(p: string): string {
-  return parties.find((x) => x.code === (p as PartyCode))?.color_text ?? '#111111';
-}
 
 function draw() {
   const canvas = document.getElementById('board') as HTMLCanvasElement;
   const ctx = canvas.getContext('2d')!;
-  drawScene(ctx, computeMetrics(canvas.width, canvas.height), board, over ? null : active, colorOf, textColorOf);
+  drawScene(ctx, computeMetrics(canvas.width, canvas.height), board, over ? null : active, colorOf);
 }
 
 function spawnNext() {
