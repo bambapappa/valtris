@@ -23,6 +23,28 @@ let started = false;       // har användaren tryckt Starta? (stänger av loopen
 let rafId: number | null = null;
 const store = loadStore();
 
+// ── Responsiv canvas ──
+// Brädet skalas efter tillgänglig bredd så det inte svämmar över på en telefon.
+// Max 360 px intern upplösning (cell ≈ 36 px) — skarpare än det fasta 300×600
+// som fanns tidigare, och krymper på smala skärmar. width/height sätts i JS så
+// cellerna i computeMetrics blir konsekventa och ritningen skarp.
+const MAX_BOARD_W = 360;
+function resizeCanvas() {
+  const canvas = document.getElementById('board') as HTMLCanvasElement | null;
+  if (!canvas) return;
+  const app = document.querySelector('.vt-app') as HTMLElement | null;
+  // Tillgänglig bredd = appens content-box (padding är redan avdraget).
+  const avail = (app ? app.clientWidth : window.innerWidth) - 4; // 4 px slack för board-wrap:s 2 px ram
+  const targetW = Math.min(MAX_BOARD_W, Math.max(160, avail));
+  const cell = Math.floor(targetW / COLS);
+  const w = cell * COLS;
+  const h = cell * ROWS;
+  if (canvas.width !== w || canvas.height !== h) {
+    canvas.width = w;
+    canvas.height = h;
+  }
+}
+
 // Pieces currently locked on the board, keyed by pieceId. Used to honestly sum
 // the cleared promises' costs when a line clears (Global Constraint: cost drives
 // score). The same promise id may be locked more than once across a long game
@@ -38,6 +60,29 @@ function draw() {
   const canvas = document.getElementById('board') as HTMLCanvasElement;
   const ctx = canvas.getContext('2d')!;
   drawScene(ctx, computeMetrics(canvas.width, canvas.height), board, over ? null : active, colorOf);
+}
+
+// ── Gemensamma handlingar ──
+// Både tangentbordet och touch-knapparna anropar dessa — input-logiken finns på
+// ett ställe, inte duplicerad. En liten per-action throttle hindrar snabba
+// tryck (t.ex. touchstart + syntetiserad click) från att elda av två gånger.
+type ActionKind = 'left' | 'right' | 'rotate' | 'down' | 'drop';
+const lastActionAt: Record<ActionKind, number> = { left: 0, right: 0, rotate: 0, down: 0, drop: 0 };
+const ACTION_THROTTLE_MS = 40;
+
+function handleAction(action: ActionKind) {
+  if (!started || over) return;
+  const now = performance.now();
+  if (now - lastActionAt[action] < ACTION_THROTTLE_MS) return;
+  lastActionAt[action] = now;
+  switch (action) {
+    case 'left':   active = tryMove(board, active, -1, 0) ?? active; break;
+    case 'right':  active = tryMove(board, active, 1, 0) ?? active; break;
+    case 'rotate': active = tryRotate(board, active) ?? active; break;
+    case 'down': { const d = tryMove(board, active, 0, 1); if (d) { active = d; score += 1; } break; }
+    case 'drop':   active = { ...active, row: hardDropRow(board, active) }; lockActive(); break;
+  }
+  setStats(score, level, lines, bestOf(store));
 }
 
 function spawnNext() {
@@ -144,15 +189,30 @@ window.addEventListener('keydown', (e) => {
   if (!started) return;                       // ignore keys on start screen
   if (over) { if (e.key === 'Enter') beginGame(); return; }  // Enter = spela igen
   switch (e.key) {
-    case 'ArrowLeft': active = tryMove(board, active, -1, 0) ?? active; break;
-    case 'ArrowRight': active = tryMove(board, active, 1, 0) ?? active; break;
-    case 'ArrowDown': { const d = tryMove(board, active, 0, 1); if (d) { active = d; score += 1; } break; }
-    case 'ArrowUp': active = tryRotate(board, active) ?? active; break;
-    case ' ': active = { ...active, row: hardDropRow(board, active) }; lockActive(); break;
+    case 'ArrowLeft':  handleAction('left'); break;
+    case 'ArrowRight': handleAction('right'); break;
+    case 'ArrowDown':  handleAction('down'); break;
+    case 'ArrowUp':    handleAction('rotate'); break;
+    case ' ':          e.preventDefault(); handleAction('drop'); break;
     default: return;
   }
-  setStats(score, level, lines, bestOf(store));
 });
+
+// ── Touch-kontroller ──
+// pointerdown täcker mus, touch och pen — ett enda event, inget dubbelavfyrande
+// från touchstart + syntetiserad click. touch-action: none (satt i CSS) stänger
+// av scroll/zoom på knapparna och brädet. preventDefault här stoppar följden
+// (click, fokus-ring på iOS) för att kåpan ska sitta på trycket, inte på klicket.
+document.querySelectorAll<HTMLButtonElement>('.vt-touch [data-action]').forEach((btn) => {
+  const action = btn.dataset.action as ActionKind;
+  btn.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    handleAction(action);
+  });
+});
+
+// Responsiv canvas: omrita vid resize så brädet alltid fyller tillgänglig bredd.
+window.addEventListener('resize', () => { resizeCanvas(); draw(); });
 
 const nextEl = document.getElementById('next');
 if (nextEl) {
@@ -232,6 +292,9 @@ async function load() {
     console.error(err);
   }
 }
+
+// Sätt responsiv canvas-storlek vid start (och vid resize, se ovan).
+resizeCanvas();
 
 load();
 

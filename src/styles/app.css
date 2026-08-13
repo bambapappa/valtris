@@ -62,7 +62,9 @@
 
 .vt-board-wrap {
   position: relative;
-  display: inline-block;
+  /* Flex-kolumn så canvasen sätter bredden och touch-listen fyller samma bredd. */
+  display: flex;
+  flex-direction: column;
   border: var(--linje-tabell-ytter);  /* 2px svarta ram runt brädet */
   background: var(--papper);
 }
@@ -71,6 +73,42 @@
   background: var(--papper);
   max-width: 100%;
   height: auto;
+  /* Förhindra scroll/zoom när spelaren sveper över brädet på telefon. */
+  touch-action: none;
+}
+
+/* ── Touch-kontroller ──
+ * Syns på alla enheter (upptäckbara för nya spelare, tar lite plats på desktop
+ * men skadar inte). Aktiveras via pointerdown i main.ts. Profiltokens: radius 0,
+ * 2 px svart ram, Mono-symboler, gul signalfärg vid :active. */
+.vt-touch {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+  padding: 0.4rem;
+  border-top: 1px solid var(--svarta);
+  background: var(--papper);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.vt-btn {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--steg-2);
+  line-height: 1;
+  color: var(--svarta);
+  background: var(--papper);
+  border: 2px solid var(--svarta);
+  padding: 0.85rem 0;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.vt-btn:active {
+  background: var(--gul);
 }
 
 /* ── Sidopanel: liten, kompakt. Tar bara platsen sitt innehåll behöver. ── */

@@ -55,6 +55,15 @@
         <div class="vt-board-wrap">
           <canvas id="board" width="300" height="600" aria-label="Spelplan"></canvas>
           <div id="overlay" class="vt-overlay" hidden></div>
+          <!-- Touch-kontroller: syns på alla enheter (upptäckbara), tas inte
+               bort på desktop. Knapparna triggar samma handlingar som
+               tangentbordet (data-action → handleAction i main.ts). -->
+          <div class="vt-touch" role="group" aria-label="Kontroller">
+            <button class="vt-btn" type="button" data-action="left" aria-label="Vänster"><span aria-hidden="true">◀</span></button>
+            <button class="vt-btn" type="button" data-action="rotate" aria-label="Rotera"><span aria-hidden="true">↻</span></button>
+            <button class="vt-btn" type="button" data-action="right" aria-label="Höger"><span aria-hidden="true">▶</span></button>
+            <button class="vt-btn" type="button" data-action="drop" aria-label="Tappa hårt"><span aria-hidden="true">⤓</span></button>
+          </div>
         </div>
 
         <aside class="vt-side">
