@@ -41,6 +41,34 @@ export function stampColorOn(bg: string): string {
   return lum > 0.55 ? STAMP_DARK : STAMP_LIGHT;
 }
 
+/**
+ * Blanda två hex-färger (`#rrggbb`) mot varandra med andel `amt` ∈ [0,1].
+ * amt=0 → `a`, amt=1 → `b`. Används av renderaren för att uniformt härleda
+ * en ljusare (mix mot #ffffff) respektive mörkare (mix mot #000000) variant
+ * av en partifärg — samma andel för alla partier, så djupet blir neutralt.
+ *
+ * Enkel linjär kanalblandning (alpha-aware inte behövt — båda argument är
+ * ogenomskinliga hex). Returnerar alltid `#rrggbb` (lägre bokstäver).
+ */
+export function mix(a: string, b: string, amt: number): string {
+  const t = Math.max(0, Math.min(1, amt));
+  const pa = parseHex(a);
+  const pb = parseHex(b);
+  const r = Math.round(pa[0] + (pb[0] - pa[0]) * t);
+  const g = Math.round(pa[1] + (pb[1] - pa[1]) * t);
+  const bl = Math.round(pa[2] + (pb[2] - pa[2]) * t);
+  return '#' + [r, g, bl].map((n) => n.toString(16).padStart(2, '0')).join('');
+}
+
+function parseHex(h: string): [number, number, number] {
+  const s = h.replace('#', '');
+  return [
+    parseInt(s.slice(0, 2), 16),
+    parseInt(s.slice(2, 4), 16),
+    parseInt(s.slice(4, 6), 16),
+  ];
+}
+
 /** Versala rubriker (används sällan på canvas — aldrig tal). */
 export const FONT_DISPLAY = '"Anton", sans-serif';
 /** Alla tal, etiketter, stämplar på canvas. */

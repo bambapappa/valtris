@@ -1,7 +1,9 @@
 import { fetchGameInput, toGamePieces } from './api';
 import { PromisePool } from './pool';
 import { createBoard, spawn, tryMove, tryRotate, hardDropRow, lockPiece, clearLines, isSpawnBlocked, COLS, ROWS } from './engine';
+import type { Board } from './engine';
 import { computeMetrics, drawScene } from './render';
+import type { ClearFlash } from './render';
 import { lockScore, lineScore } from './score';
 import { colorForParty } from './mapping';
 import { loadStore, saveStore, bestOf, addScore } from './highscore';
@@ -22,6 +24,21 @@ let over = false;
 let started = false;       // har användaren tryckt Starta? (stänger av loopen före start)
 let rafId: number | null = null;
 const store = loadStore();
+
+// ── Radrens-flash ──
+// När clearLines rensar >0 rader sätts `clearFlash` med de fulla radindexen
+// (i det board som ritas under flashen) och en tidsstämpel ~180 ms framåt.
+// Renderaren ritar en vit/gul flash på just dessa rader. Under fönstret
+// blockeras spawn/lock (vi håller kvar det rensade boardet visuellt) och
+// medan flashen är aktiv hoppar tick-gravity över — klossen ska inte gå
+// neråt under blinket. Efter löper ut sätts boardet till det kollapsade
+// (clearLines redan beräknat) och spelet fortsätter. Allt visuellt;
+// clearLines i engine.ts är fortfarande ren och omedelbar.
+const FLASH_MS = 180;
+let clearFlash: ClearFlash | null = null;
+// Det kollapsade board som träder i kraft när flashen löper ut. Sätts
+// samtidigt som clearFlash.
+let pendingBoard: Board | null = null;
 
 // ── Responsiv canvas ──
 // Brädet skalas efter tillgänglig bredd så det inte svämmar över på en telefon.
@@ -59,7 +76,10 @@ function colorOf(p: string) { return colorForParty(p as PartyCode, parties); }
 function draw() {
   const canvas = document.getElementById('board') as HTMLCanvasElement;
   const ctx = canvas.getContext('2d')!;
-  drawScene(ctx, computeMetrics(canvas.width, canvas.height), board, over ? null : active, colorOf);
+  // Under en flash hålls `board` kvar i pre-clear-läget (fulla rader syns),
+  // så flashen kan läggas över precis de rader som ska rensas. active är null
+  // under flashen (se lockActive) så ingen aktiv kloss ritas då.
+  drawScene(ctx, computeMetrics(canvas.width, canvas.height), board, over ? null : active, colorOf, clearFlash);
 }
 
 // ── Gemensamma handlingar ──
@@ -72,6 +92,9 @@ const ACTION_THROTTLE_MS = 40;
 
 function handleAction(action: ActionKind) {
   if (!started || over) return;
+  // Blockera all input under radrens-flashen — klossen är redan låst och
+  // spawn sker först när flashen löpt ut.
+  if (clearFlash) return;
   const now = performance.now();
   if (now - lastActionAt[action] < ACTION_THROTTLE_MS) return;
   lastActionAt[action] = now;
@@ -93,6 +116,14 @@ function spawnNext() {
   if (isSpawnBlocked(board, piece)) endGame(killer ?? piece);
 }
 
+/**
+ * Låser den aktiva klossen, räknar poäng och — om rader rensas — startar en
+ * ~180 ms radrens-flash. Under flashen hålls `board` kvar i pre-clear-läget
+ * (fulla rader syns) så renderaren kan blinka på just de raderna; det
+ * kollapsade boardet sparas i `pendingBoard` och träder i kraft (med spawn)
+ * när flashen löper ut i step(). Motorn (clearLines i engine.ts) är oförändrad
+ * och omedelbar — flashen är uteslutande en render+loop-fråga lagd ovanpå.
+ */
 function lockActive() {
   killer = active.game;
   board = lockPiece(board, active);
@@ -100,18 +131,45 @@ function lockActive() {
 
   const before = board;
   const res = clearLines(board);
-  board = res.board;
+  const postClear = res.board;
 
   if (res.cleared > 0) {
-    const clearedPieces = collectClearedPieces(before, board);
+    const clearedPieces = collectClearedPieces(before, postClear);
     lines += res.cleared;
     score += lineScore(clearedPieces, res.cleared, level);
     level = 1 + Math.floor(lines / 10);
     pruneOnBoard();
+
+    // Vilka rader var fulla (ska blinkas)? En rad var full i `before` om ingen
+    // cell var null. Samla indexen i `before`:s ordning.
+    const fullRows: number[] = [];
+    for (let i = 0; i < before.length; i++) {
+      if (before[i]!.every((c) => c !== null)) fullRows.push(i);
+    }
+
+    // Visuell frysning: behåll pre-clear board (fulla rader) för ritningen, lägg
+    // undan det kollapsade boardet till flashens slut. Ingen aktiv kloss
+    // under flashen (draw hoppar över den om active är null-ekvivalent).
+    setStats(score, level, lines, bestOf(store));
+    pendingBoard = postClear;
+    clearFlash = { rows: fullRows, until: performance.now() + FLASH_MS };
+    // Sätt active till en osynlig (utanför brädet) pseudo-piece så draw inte
+    // ritar något aktivt under flashen. step gör spawnNext när flashen löpt ut.
+    active = { ...active, row: ROWS + 4 };
   } else {
     score += lockScore(active.game);
+    board = postClear;
+    setStats(score, level, lines, bestOf(store));
+    spawnNext();
   }
-  setStats(score, level, lines, bestOf(store));
+}
+
+/** Tillämpa en utgången flash: byt till kollapsat board och spawna nästa. */
+function finishClearFlash() {
+  if (!pendingBoard) return;
+  board = pendingBoard;
+  pendingBoard = null;
+  clearFlash = null;
   spawnNext();
 }
 
@@ -166,7 +224,12 @@ function endGame(k: GamePiece) {
 
 function step(now: number) {
   if (started && !over) {
-    if (now - lastTick > tickInterval()) {
+    // Radrens-flash aktiv? Ingen gravity under fönstret — vi håller det
+    // pre-clear boardet stilla så blinket syns. Löper det ut nu, applicera
+    // kollapsen och spawna nästa kloss.
+    if (clearFlash && now >= clearFlash.until) {
+      finishClearFlash();
+    } else if (!clearFlash && now - lastTick > tickInterval()) {
       lastTick = now;
       const down = tryMove(board, active, 0, 1);
       if (down) active = down; else lockActive();
@@ -182,17 +245,18 @@ function stopLoop() {
 
 function reset() {
   board = createBoard(); score = 0; level = 1; lines = 0; over = false; killer = null;
-  nextPiece = null; onBoard.clear(); hideOverlay(); showStatus(''); spawnNext(); setStats(0, 1, 0, bestOf(store));
+  nextPiece = null; onBoard.clear(); clearFlash = null; pendingBoard = null;
+  hideOverlay(); showStatus(''); spawnNext(); setStats(0, 1, 0, bestOf(store));
 }
 
 window.addEventListener('keydown', (e) => {
   if (!started) return;                       // ignore keys on start screen
   if (over) { if (e.key === 'Enter') beginGame(); return; }  // Enter = spela igen
   switch (e.key) {
-    case 'ArrowLeft':  handleAction('left'); break;
-    case 'ArrowRight': handleAction('right'); break;
-    case 'ArrowDown':  handleAction('down'); break;
-    case 'ArrowUp':    handleAction('rotate'); break;
+    case 'ArrowLeft':  e.preventDefault(); handleAction('left'); break;
+    case 'ArrowRight': e.preventDefault(); handleAction('right'); break;
+    case 'ArrowDown':  e.preventDefault(); handleAction('down'); break;
+    case 'ArrowUp':    e.preventDefault(); handleAction('rotate'); break;
     case ' ':          e.preventDefault(); handleAction('drop'); break;
     default: return;
   }
@@ -203,12 +267,21 @@ window.addEventListener('keydown', (e) => {
 // från touchstart + syntetiserad click. touch-action: none (satt i CSS) stänger
 // av scroll/zoom på knapparna och brädet. preventDefault här stoppar följden
 // (click, fokus-ring på iOS) för att kåpan ska sitta på trycket, inte på klicket.
+//
+// A11y: knapparna är riktiga <button>, så Enter/Space aktiverar dem nativt via
+// `click`. Eftersom pointerdown anropar preventDefault undertrycks den
+// syntetiserade clicken på touch — men tangentbords-aktivering (Enter/Space)
+// ger en äkta click-event, så vi lyssnar också på click för desktop-a11y.
+// Throttlen i handleAction hindrar dubbelavfyrande om både pointerdown och
+// click nås (t.ex. musklick).
 document.querySelectorAll<HTMLButtonElement>('.vt-touch [data-action]').forEach((btn) => {
   const action = btn.dataset.action as ActionKind;
   btn.addEventListener('pointerdown', (e) => {
     e.preventDefault();
     handleAction(action);
   });
+  // Tangentbordsaktivering (Enter/Space på fokuserad knapp) → click-event.
+  btn.addEventListener('click', () => handleAction(action));
 });
 
 // Responsiv canvas: omrita vid resize så brädet alltid fyller tillgänglig bredd.

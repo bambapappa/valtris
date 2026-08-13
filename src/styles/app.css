@@ -11,6 +11,17 @@
   display: flex;
   flex-direction: column;
   gap: clamp(1.5rem, 4vw, 3rem);
+  /* Subtilt geometriskt mönster bakom allt: mycket svaga diagonala
+   * hårlinjer via upprepad linjär gradient. Inte plottrigt — bara så
+   * bakgrunden inte är en platt fläck. Pappersfärgen läser fortfarande. */
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 28px,
+      rgba(17, 17, 17, 0.018) 28px,
+      rgba(17, 17, 17, 0.018) 29px
+    );
 }
 
 /* ── Header ── */
@@ -31,8 +42,18 @@
   font-size: var(--steg-5);
   line-height: 1;
   letter-spacing: var(--sparrning-display);
-  text-transform: lowercase;  /* valtris är ett ord, inte ett utrop */
+  text-transform: uppercase;   /* självsäkrare versal rubrik */
   color: var(--svarta);
+}
+/* En kort gul accent-barp under titeln — utlovats signalfärg som ett
+ * tryckmärke, inte en färgplatta. Neutral: inget partikopplat. */
+.vt-title::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 0.35rem;
+  margin-top: 0.5rem;
+  background: var(--gul);
 }
 .vt-sub {
   font-family: var(--font-brod);
@@ -109,6 +130,13 @@
 }
 .vt-btn:active {
   background: var(--gul);
+}
+/* Tangentbordsfokus på touch-knapparna: tydlig gul ram så desktop-användare
+ * som tabbar/navigerar med Enter ser var de är. :focus-visible släcks vid
+ * mus-/touch-aktivering så ingen "klick-ring" stannar kvar på mobil. */
+.vt-btn:focus-visible {
+  outline: 3px solid var(--gul);
+  outline-offset: -3px;
 }
 
 /* ── Sidopanel: liten, kompakt. Tar bara platsen sitt innehåll behöver. ── */
@@ -202,6 +230,14 @@
   font-size: var(--steg-1);
   color: var(--svarta);
   text-align: right;
+}
+/* Poäng = det viktigaste talet → gul accent-markör (en vänsterkant) så ögat
+ * hittar det. Neutral signalfärg, ingen partikoppling. */
+.vt-stats dd#score {
+  font-size: var(--steg-2);
+  font-weight: 700;
+  padding-left: 0.45rem;
+  border-left: 0.3rem solid var(--gul);
 }
 
 /* ── Statusraden (laddar / felmeddelande) ── */
@@ -298,6 +334,16 @@
   color: var(--svarta);
   border-bottom: var(--linje-sektion);
   padding-bottom: 0.5rem;
+  position: relative;
+}
+/* Gul accent-mark under rubriken — samma motiv som på start-titeln. */
+.vt-card-title::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 0.3rem;
+  margin-top: 0.4rem;
+  background: var(--gul);
 }
 
 .vt-card-stats {
@@ -448,9 +494,17 @@
   font-size: var(--steg-5);
   line-height: 1;
   letter-spacing: var(--sparrning-display);
-  text-transform: lowercase;  /* valtris är ett ord, inte ett utrop */
+  text-transform: uppercase;   /* självsäkrare versal titel */
   color: var(--svarta);
   margin-top: 0.25rem;
+}
+.vt-start-title::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 0.35rem;
+  margin-top: 0.5rem;
+  background: var(--gul);
 }
 .vt-start-howto {
   font-family: var(--font-brod);
@@ -554,12 +608,14 @@
   /* stämpelfärg inline (stampColorOn) */
 }
 
-/* Start-knappen: platt i utlovats stil, gul signalfärg sparsamt. */
+/* Start-knappen: platt i utlovats stil, med en fast gul vänstermarkering
+ * (signalfärg) så den läser som primär handling utan att bli en färgplatta. */
 .vt-start-actions {
   display: flex;
   justify-content: flex-start;
 }
 .vt-start-btn {
+  position: relative;
   font-family: var(--font-display);
   font-size: var(--steg-2);
   text-transform: uppercase;
@@ -568,14 +624,31 @@
   color: var(--svarta);
   background: var(--papper);
   border: 2px solid var(--svarta);
-  padding: 0.6rem 1.4rem;
+  /* Ful mark: en inre gul kant på vänster sida (box-shadow inset). */
+  box-shadow: inset 0.45rem 0 0 var(--gul);
+  padding: 0.6rem 1.4rem 0.6rem 1.1rem;
   cursor: pointer;
+  transition: background 80ms linear;
 }
 .vt-start-btn:hover:not(:disabled) {
   background: var(--gul);
+  /* När bakgrunden blir gul blir den inre vänstermarkeringen dubbel —
+   * släck den för en ren hover. */
+  box-shadow: none;
+  padding-left: 1.4rem;
+}
+.vt-start-btn:active:not(:disabled) {
+  background: var(--svarta);
+  color: var(--papper);
+  box-shadow: inset 0.45rem 0 0 var(--gul);
 }
 .vt-start-btn:disabled {
   color: var(--dis);
   cursor: default;
+  box-shadow: inset 0.45rem 0 0 var(--linje-svag);
+}
+.vt-start-btn:focus-visible {
+  outline: 3px solid var(--gul);
+  outline-offset: 2px;
 }
 
