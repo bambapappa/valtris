@@ -73,6 +73,15 @@ export function cellsOf(p: ActivePiece): Array<[number, number]> {
   return ROTATIONS[p.shape]![p.rotation % 4]!.map(([r, c]) => [p.row + r, p.col + c]);
 }
 
+/**
+ * Rotation-0 cell-offsets (4×4 bounding box) för en tetrominoform. Enda källan
+ * till sanning för formerna — återanvänds av både celler-of (via ROTATIONS) och
+ * UI:t (glyph/mini-rendering) så tabellen inte dupliceras.
+ */
+export function shapeCells(shape: Tetromino): Array<[number, number]> {
+  return ROTATIONS[shape]![0]!.map(([r, c]) => [r, c] as [number, number]);
+}
+
 export function canPlace(board: Board, p: ActivePiece): boolean {
   for (const [r, c] of cellsOf(p)) {
     if (r < 0 || r >= ROWS || c < 0 || c >= COLS) return false;

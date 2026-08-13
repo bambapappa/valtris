@@ -1,5 +1,6 @@
 import type { GamePiece, PartyData, Tetromino } from './types';
 import { stampColorOn, SVARTA, PAPPER } from './profile';
+import { shapeCells } from './engine';
 
 /**
  * UI-hjälpar för valtris. All DOM-uppdatering samlad här så main.ts bara
@@ -30,10 +31,15 @@ export function setStats(score: number, level: number, lines: number, high: numb
 }
 
 /**
- * Nästa-kloss i profil: partifärgad stämpel (plupp + förkortning). Stämpelfärgen
- * väljs luminansbaserat via `stampColorOn(party.color)` så förkortningen är
- * läslig för alla 8 partier — inte `color_text`, som för 5 av 8 partier är
- * identisk med fillen. Visar INGEN poängsammanställning i förväg — neutralitet.
+ * Nästa-kloss i profil: en mini-rendering av själva tetrominoFORMEN (4×4 celler
+ * i spawn-rotation), ritad i partifärg med stämpelfärgad förkortning centrerad
+ * över formen. Formen kommer från `shapeCells(piece.shape)` (src/engine.ts) —
+ * alltså samma tabell som styr spelet, inte en kopia. Partiet är fortfarande
+ * endast kosmetiskt (färg + förkortning); formen styrs av kategorin.
+ *
+ * Stämpelfärgen väljs luminansbaserat via `stampColorOn(party.color)` så
+ * förkortningen är läslig för alla 8 partier. Visar INGEN poängsammanställning
+ * i förväg — neutralitet.
  */
 export function showNext(piece: GamePiece | null, parties: PartyData[]) {
   const el = document.getElementById('next');
@@ -42,10 +48,29 @@ export function showNext(piece: GamePiece | null, parties: PartyData[]) {
   const party = parties.find((p) => p.code === piece.party);
   const bg = party?.color ?? '#888888';
   const fg = stampColorOn(bg);
-  el.innerHTML = `<div class="vt-piece" style="background:${bg}">
-    <span class="vt-abbr" style="color:${fg}">${piece.party.toUpperCase()}</span>
-    <span class="vt-cat" style="color:${fg};opacity:0.85">${piece.category}</span>
-  </div>`;
+  const abbr = piece.party.toUpperCase();
+
+  // 4×4 bounding box; fyll bara de celler som formen faktiskt täcker (rotation 0).
+  const filled = new Set(shapeCells(piece.shape).map(([r, c]) => `${r},${c}`));
+  const cells: string[] = [];
+  for (let r = 0; r < 4; r++) {
+    for (let c = 0; c < 4; c++) {
+      const isFilled = filled.has(`${r},${c}`);
+      cells.push(
+        isFilled
+          ? `<span class="vt-next-cell is-filled" style="background:${bg};border-color:${SVARTA}"></span>`
+          : `<span class="vt-next-cell"></span>`,
+      );
+    }
+  }
+
+  el.innerHTML = `<div class="vt-next-shape">
+    <div class="vt-next-grid" role="img" aria-label="Nästa kloss: form ${piece.shape}, parti ${abbr}">
+      ${cells.join('')}
+    </div>
+    <span class="vt-next-abbr" style="color:${fg}">${abbr}</span>
+  </div>
+  <span class="vt-cat" style="color:${fg};opacity:0.85">${piece.category}</span>`;
 }
 
 /** Detaljpuff vid hover på nästa-kloss — löftet i korthet, neutral ton. */
@@ -182,23 +207,12 @@ const CATEGORY_FORM_ROWS: Array<{ categories: string[]; shape: Tetromino }> = [
   { categories: ['försvar', 'infrastruktur'], shape: 'J' },
 ];
 
-/** Rotation-0 cell-offsets (4×4 bounding box) per form, för glyph-ritning.
- * Speglar src/engine.ts ROTATIONS[shape][0]. */
-const SHAPE_GLYPH_CELLS: Record<Tetromino, Array<[number, number]>> = {
-  I: [[1, 0], [1, 1], [1, 2], [1, 3]],
-  O: [[0, 1], [0, 2], [1, 1], [1, 2]],
-  T: [[0, 1], [1, 0], [1, 1], [1, 2]],
-  S: [[0, 1], [0, 2], [1, 0], [1, 1]],
-  Z: [[0, 0], [0, 1], [1, 1], [1, 2]],
-  J: [[0, 0], [1, 0], [1, 1], [1, 2]],
-  L: [[0, 2], [1, 0], [1, 1], [1, 2]],
-};
-
 /** Liten inline-SVG-glyph av en tetrominoform (papper på svarta linjer), i
  * profilens kantiga stil — radius 0, 2px svart ram. Neutral färg (ej partifärg)
- * eftersom formen är styrspelet, inte partiet. */
+ * eftersom formen är styrspelet, inte partiet. Cell-offset kommer från
+ * `shapeCells` (src/engine.ts) — ingen duplicerad formtabell. */
 export function shapeGlyph(shape: Tetromino, size = 5): string {
-  const cells = SHAPE_GLYPH_CELLS[shape];
+  const cells = shapeCells(shape);
   const dim = size * 4;
   const rects = cells
     .map(([r, c]) => `<rect x="${c * size}" y="${r * size}" width="${size}" height="${size}" fill="${PAPPER}" stroke="${SVARTA}" stroke-width="0.6"/>`)

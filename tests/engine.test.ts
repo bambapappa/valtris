@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   createBoard, cellsOf, canPlace, tryMove, tryRotate,
   hardDropRow, lockPiece, clearLines, spawn, isSpawnBlocked,
+  shapeCells,
   COLS, ROWS,
 } from '../src/engine';
 import type { GamePiece } from '../src/types';
@@ -104,5 +105,34 @@ describe('engine sanity (rotations + clearLines drop)', () => {
     expect(board[ROWS - 1]![0]?.pieceId).toBe('x');
     // The row above should now be empty.
     expect(board[ROWS - 2]!.every((c) => c === null)).toBe(true);
+  });
+});
+
+describe('shapeCells', () => {
+  it('returns 4 distinct rotation-0 offsets for every form', () => {
+    const shapes: GamePiece['shape'][] = ['I', 'O', 'T', 'S', 'Z', 'J', 'L'];
+    for (const shape of shapes) {
+      const offsets = shapeCells(shape).map(([r, c]) => `${r},${c}`);
+      expect(offsets.length).toBe(4);
+      expect(new Set(offsets).size).toBe(4);
+      // Alla offsets ligger inom 4×4 bounding box
+      for (const [r, c] of shapeCells(shape)) {
+        expect(r).toBeGreaterThanOrEqual(0);
+        expect(r).toBeLessThan(4);
+        expect(c).toBeGreaterThanOrEqual(0);
+        expect(c).toBeLessThan(4);
+      }
+    }
+  });
+  it('matches cellsOf at rotation 0 (single source of truth)', () => {
+    const shapes: GamePiece['shape'][] = ['I', 'O', 'T', 'S', 'Z', 'J', 'L'];
+    for (const shape of shapes) {
+      const fromCellsOf = cellsOf({
+        game: piece(shape), shape, rotation: 0, row: 0, col: 0,
+      }).map(([r, c]) => `${r},${c}`).sort();
+      const fromShapeCells = shapeCells(shape)
+        .map(([r, c]) => `${r},${c}`).sort();
+      expect(fromShapeCells).toEqual(fromCellsOf);
+    }
   });
 });

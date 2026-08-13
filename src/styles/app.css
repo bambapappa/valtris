@@ -95,33 +95,49 @@
   border-bottom: var(--linje-under);
 }
 
-/* Nästa-kloss: liten partifärgad plupp (kosmetiskt), inte ett stort kort. */
+/* Nästa-kloss: mini-rendering av formen (4×4 celler) i partifärg, med
+ * stämpelfärgad förkortning centrerad över formen. Formen = styrspelet
+ * (kategori), färgen = kosmetiskt (parti). radius 0, svart hårlinje. */
 .vt-next { min-height: 0; }
-.vt-piece {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.25rem 0.4rem;
-  border: 2px solid var(--svarta);
-  background: var(--papper);
-  /* partifärg läggs på som inline style av ui.ts (colorOf) */
-}
-.vt-piece-swatch {
+.vt-next-shape {
+  position: relative;
   display: inline-block;
+  line-height: 0;
+}
+.vt-next-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 0.9rem);
+  grid-template-rows: repeat(4, 0.9rem);
+  gap: 0;
+}
+.vt-next-cell {
   width: 0.9rem;
   height: 0.9rem;
-  border: 1px solid var(--svarta);
-  /* partifärg via inline style */
+  background: transparent;
+  border: 1px solid transparent;
+  box-sizing: border-box;
 }
-.vt-abbr {
+.vt-next-cell.is-filled {
+  /* background + border-color sätts via inline style av ui.ts */
+  border-style: solid;
+}
+.vt-next-abbr {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: var(--steg-0);
   letter-spacing: var(--sparrning-etikett);
   line-height: 1;
-  /* text-färg via inline style (color_text) för kontrast */
+  pointer-events: none;
+  /* text-färg via inline style (stampColorOn) för kontrast */
 }
 .vt-cat {
+  display: block;
+  margin-top: 0.3rem;
   font-family: var(--font-mono);
   font-size: var(--steg--1);
   color: var(--dis);
