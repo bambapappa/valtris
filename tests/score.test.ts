@@ -3,7 +3,7 @@ import { lineMultiplier, levelMultiplier, lockScore, lineScore } from '../src/sc
 import type { GamePiece } from '../src/types';
 
 const gp = (msek_base: number): GamePiece =>
-  ({ id: 'p', title: 't', party: 's', category: 'övrigt', msek_base, shape: 'O' });
+  ({ id: 'p', title: 't', party: 's', category: 'övrigt', msek_base, shape: 'O', quote: '', source: { url: '', domain: '' } });
 
 describe('scoring', () => {
   it('line multiplier rewards multi-line clears, especially tetris', () => {

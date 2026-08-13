@@ -11,6 +11,13 @@ function asParty(x: unknown): PartyCode {
   return PARTIES.includes(x as PartyCode) ? (x as PartyCode) : 's';
 }
 
+/** Validate a source subset { url, domain }. Missing/invalid → empty strings. */
+function asSource(s: any): { url: string; domain: string } {
+  const url = s && typeof s.url === 'string' ? s.url : '';
+  const domain = s && typeof s.domain === 'string' ? s.domain : '';
+  return { url, domain };
+}
+
 export function validatePromises(raw: any): PromiseData[] {
   const data = Array.isArray(raw?.data) ? raw.data : [];
   return data
@@ -22,6 +29,8 @@ export function validatePromises(raw: any): PromiseData[] {
       category: asCategory(p.category),
       status: typeof p.status === 'string' ? p.status : 'aktiv',
       cost: { msek_base: Number(p?.cost?.msek_base) || 0 },
+      quote: typeof p.quote === 'string' ? p.quote : '',
+      source: asSource(p?.source),
     }));
 }
 
@@ -29,7 +38,15 @@ export function validateParties(raw: any): PartyData[] {
   const data = Array.isArray(raw?.data) ? raw.data : [];
   return data
     .filter((p: any) => p && PARTIES.includes(p.code))
-    .map((p: any) => ({ code: p.code, name: p.name, color: p.color, block: p.block }));
+    .map((p: any) => ({
+      code: p.code,
+      name: typeof p.name === 'string' ? p.name : '',
+      color: typeof p.color === 'string' ? p.color : '#888888',
+      // color_text från API; om det saknas faller vi tillbaka på svarta för
+      // läsbar stämpel på ljusa partifärger.
+      color_text: typeof p.color_text === 'string' ? p.color_text : '#111111',
+      block: typeof p.block === 'string' ? p.block : '',
+    }));
 }
 
 export function toGamePieces(promises: PromiseData[]): GamePiece[] {
@@ -42,6 +59,8 @@ export function toGamePieces(promises: PromiseData[]): GamePiece[] {
       category: p.category,
       msek_base: p.cost.msek_base,
       shape: shapeForCategory(p.category),
+      quote: p.quote,
+      source: p.source,
     }));
 }
 

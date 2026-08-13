@@ -5,32 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>valtris — Tetris med vallöften</title>
     <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/app.css" />
   </head>
   <body>
-    <main id="app">
+    <main id="app" class="vt-app">
       <header class="vt-head">
-        <h1>valtris</h1>
+        <p class="vt-eyebrow">utlovat.se × tetris</p>
+        <h1 class="vt-title">valtris</h1>
         <p class="vt-sub">Tetris med partiernas riktiga vallöften. Partiet på klossen är kosmetiskt — det styr inget.</p>
       </header>
+
       <section class="vt-game">
-        <canvas id="board" width="300" height="600" aria-label="Spelplan"></canvas>
+        <div class="vt-board-wrap">
+          <canvas id="board" width="300" height="600" aria-label="Spelplan"></canvas>
+          <div id="overlay" class="vt-overlay" hidden></div>
+        </div>
+
         <aside class="vt-side">
-          <div id="next" aria-label="Nästa kloss"></div>
-          <dl class="vt-stats">
-            <dt>Poäng</dt><dd id="score">0</dd>
-            <dt>Nivå</dt><dd id="level">1</dd>
-            <dt>Bästa</dt><dd id="highscore">—</dd>
-          </dl>
+          <section class="vt-panel">
+            <h2 class="vt-panel-title">Nästa kloss</h2>
+            <div id="next" class="vt-next" aria-label="Nästa kloss"></div>
+          </section>
+
+          <section class="vt-panel">
+            <h2 class="vt-panel-title">Poäng</h2>
+            <dl class="vt-stats">
+              <dt>Poäng</dt><dd id="score">0</dd>
+              <dt>Rensade rader</dt><dd id="lines">0</dd>
+              <dt>Nivå</dt><dd id="level">1</dd>
+              <dt>Bästa</dt><dd id="highscore">—</dd>
+            </dl>
+          </section>
+
           <div id="status" class="vt-status" role="status" aria-live="polite"></div>
         </aside>
       </section>
+
       <section id="detail" class="vt-detail" hidden></section>
+
       <details class="vt-method">
         <summary>Så här spelas och mäts poängen</summary>
-        <div id="method-text"></div>
+        <div id="method-text" class="vt-method-body"></div>
       </details>
+
       <footer class="vt-foot">
-        Data från <a href="https://utlovat.se">utlovat.se</a> (CC-BY-4.0). valtris är ett oberoende projekt utan partikoppling.
+        <p>
+          Data från <a href="https://utlovat.se">utlovat.se</a> (CC-BY-4.0). valtris är ett oberoende projekt utan partikoppling.
+        </p>
       </footer>
     </main>
     <script type="module" src="/src/main.ts"></script>

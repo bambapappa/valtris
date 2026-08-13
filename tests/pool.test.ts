@@ -4,7 +4,7 @@ import type { GamePiece, Tetromino } from '../src/types';
 
 const SHAPES: Tetromino[] = ['I','O','T','S','Z','J','L'];
 function mk(shape: Tetromino, id: string): GamePiece {
-  return { id, title: id, party: 's', category: 'övrigt', msek_base: 0, shape };
+  return { id, title: id, party: 's', category: 'övrigt', msek_base: 0, shape, quote: '', source: { url: '', domain: '' } };
 }
 
 describe('PromisePool', () => {

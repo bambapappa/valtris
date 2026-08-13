@@ -3,8 +3,8 @@ import { shapeForCategory, colorForParty, lockPointsFor } from '../src/mapping';
 import type { PartyData } from '../src/types';
 
 const PARTIES: PartyData[] = [
-  { code: 's', name: 'Socialdemokraterna', color: '#EE2020', block: 'rödgrönt' },
-  { code: 'm', name: 'Moderaterna', color: '#1B5CB3', block: 'borgerligt' },
+  { code: 's', name: 'Socialdemokraterna', color: '#EE2020', color_text: '#EE2020', block: 'rödgrönt' },
+  { code: 'm', name: 'Moderaterna', color: '#1B5CB3', color_text: '#FFFFFF', block: 'borgerligt' },
 ];
 
 describe('shapeForCategory', () => {

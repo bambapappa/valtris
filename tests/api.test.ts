@@ -50,4 +50,25 @@ describe('validation', () => {
     const pieces = toGamePieces(validatePromises(promisesRaw));
     for (const p of pieces) expect(p.shape).toMatch(/^(I|O|T|S|Z|J|L)$/);
   });
+  it('toGamePieces preserves quote + source so game-over can show them', () => {
+    const pieces = toGamePieces(validatePromises(promisesRaw));
+    expect(pieces.length).toBeGreaterThan(0);
+    for (const p of pieces) {
+      expect(typeof p.quote).toBe('string');
+      expect(p.source).toBeDefined();
+      expect(typeof p.source.url).toBe('string');
+      expect(typeof p.source.domain).toBe('string');
+    }
+    // Spot-check the first record against the fixture's verbatim values.
+    const first = pieces[0]!;
+    const raw = validatePromises(promisesRaw)[0]!;
+    expect(first.quote).toBe(raw.quote);
+    expect(first.source.url).toBe(raw.source.url);
+    expect(first.source.domain).toBe(raw.source.domain);
+  });
+  it('validateParties keeps color_text for stamp contrast', () => {
+    const parties = validateParties(partiesRaw);
+    expect(parties.length).toBeGreaterThan(0);
+    for (const p of parties) expect(p.color_text).toMatch(/^#[0-9a-f]{6}$/i);
+  });
 });

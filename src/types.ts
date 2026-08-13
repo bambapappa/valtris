@@ -6,6 +6,12 @@ export type Category =
 
 export type Tetromino = 'I' | 'O' | 'T' | 'S' | 'Z' | 'J' | 'L';
 
+/** Källdata för ett löfte (url + publik domän). */
+export interface PromiseSource {
+  url: string;
+  domain: string;
+}
+
 /** Subset of utlovat /api/v1/promises.json fields we use. */
 export interface PromiseData {
   id: string;
@@ -14,12 +20,16 @@ export interface PromiseData {
   category: Category;
   status: string;
   cost: { msek_base: number };
+  quote: string;
+  source: PromiseSource;
 }
 
 export interface PartyData {
   code: PartyCode;
   name: string;
   color: string;
+  /** Partiets kontrasttextfärg — för stämpel/etikett på partifärgen. */
+  color_text: string;
   block: string;
 }
 
@@ -31,4 +41,8 @@ export interface GamePiece {
   category: Category;
   msek_base: number;
   shape: Tetromino;
+  /** Löftets citat (oral/lösen) — visas i game-over. */
+  quote: string;
+  /** Löftets källa — visas i game-over. */
+  source: PromiseSource;
 }

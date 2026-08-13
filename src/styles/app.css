@@ -1,0 +1,335 @@
+/* app.css — komponentstilar för valtris.
+ * Profiltokens kommer från tokens.css (importerad av base.css). Färger, fonter
+ * och form hämtas ALDRIG hårdkodat — alltid via tokens. Canvas-renderaren
+ * speglar samma hex i src/profile.ts. */
+
+/* ── Layout: centrerad papperskropp med hårlinjegrammatik ── */
+.vt-app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* ── Header ── */
+.vt-head {
+  border-bottom: var(--linje-sektion);
+  padding-bottom: 1rem;
+}
+.vt-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+  letter-spacing: var(--sparrning-etikett);
+  text-transform: uppercase;
+  color: var(--dis);
+  margin-bottom: 0.5rem;
+}
+.vt-title {
+  font-family: var(--font-display);
+  font-size: var(--steg-5);
+  line-height: 1;
+  letter-spacing: var(--sparrning-display);
+  text-transform: lowercase;  /* valtris är ett ord, inte ett utrop */
+  color: var(--svarta);
+}
+.vt-sub {
+  font-family: var(--font-brod);
+  font-size: var(--steg-0);
+  color: var(--grafit);
+  max-width: 60ch;
+  margin-top: 0.5rem;
+}
+
+/* ── Spelområde: bräde + sidopanel ── */
+.vt-game {
+  display: grid;
+  grid-template-columns: auto minmax(220px, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .vt-game { grid-template-columns: 1fr; }
+}
+
+.vt-board-wrap {
+  position: relative;
+  display: inline-block;
+  border: var(--linje-tabell-ytter);  /* 2px svarta ram runt brädet */
+  background: var(--papper);
+}
+.vt-board-wrap canvas {
+  display: block;
+  background: var(--papper);
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Sidopanel: nästa kloss + poäng ── */
+.vt-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.vt-panel {
+  border: var(--linje-sektion);
+  padding: 0.75rem 1rem;
+  background: var(--papper);
+}
+.vt-panel-title {
+  font-family: var(--font-display);
+  font-size: var(--steg-1);
+  text-transform: uppercase;
+  letter-spacing: var(--sparrning-display);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: var(--linje-under);
+}
+
+/* Nästa-kloss: partifärgad stämpel i profil (endast kosmetiskt) */
+.vt-next { min-height: 64px; }
+.vt-piece {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--svarta);
+  background: var(--papper);
+  /* partifärg läggs på som inline style av ui.ts (colorOf) */
+}
+.vt-piece-swatch {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--svarta);
+  /* partifärg via inline style */
+}
+.vt-abbr {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--steg-1);
+  letter-spacing: var(--sparrning-etikett);
+  /* text-färg via inline style (color_text) för kontrast */
+}
+.vt-cat {
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+  color: var(--dis);
+  text-transform: lowercase;
+}
+
+/* Poäng-stat: Mono, tabulär */
+.vt-stats {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.vt-stats dt {
+  font-size: var(--steg--1);
+  letter-spacing: var(--sparrning-etikett);
+  text-transform: uppercase;
+  color: var(--dis);
+  align-self: center;
+}
+.vt-stats dd {
+  font-size: var(--steg-1);
+  color: var(--svarta);
+  text-align: right;
+}
+
+/* ── Statusraden (laddar / felmeddelande) ── */
+.vt-status {
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+  color: var(--grafit);
+  min-height: 1.2em;
+}
+
+/* ── Detaljpuff vid hover (löftet i korthet) ── */
+.vt-detail {
+  font-family: var(--font-brod);
+  font-size: var(--steg-0);
+  border: var(--linje-sektion);
+  padding: 1rem;
+  background: var(--papper);
+}
+.vt-detail p { margin-bottom: 0.5rem; }
+.vt-detail p:last-child { margin-bottom: 0; }
+
+/* ── Metod-texten: utbyggbar, neutral ton, ingen värdering ── */
+.vt-method {
+  border: var(--linje-sektion);
+  padding: 0.75rem 1rem;
+  background: var(--papper);
+}
+.vt-method summary {
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+  letter-spacing: var(--sparrning-etikett);
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--svarta);
+}
+.vt-method-body {
+  margin-top: 0.75rem;
+  font-family: var(--font-brod);
+  font-size: var(--steg-0);
+  line-height: var(--radavstand-brod);
+  color: var(--grafit);
+  max-width: 70ch;
+}
+.vt-method-body p { margin-bottom: 0.75rem; }
+.vt-method-body p:last-child { margin-bottom: 0; }
+.vt-method-body strong { color: var(--svarta); font-weight: 700; }
+
+/* ── Footer: attribution ── */
+.vt-foot {
+  border-top: var(--linje-sektion);
+  padding-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+  color: var(--dis);
+}
+.vt-foot a { color: var(--svarta); }
+
+/* ── Game-over-overlay: papperskort, centrerat över brädet ──
+ * Container är positionerat över brädet av main.ts (initierar vid start).
+ * Själva kortet ritas i utlovats stil: papper, 2px svart ram, radius 0,
+ * Anton-versal rubrik, Mono stats, Source Serif löftesblock. */
+.vt-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(246, 243, 236, 0.92);  /* papper med svag opacitet så brädet skymtar */
+  /* opacity-backdrop utan externa beroenden; papper är konceptet */
+}
+.vt-overlay[hidden] { display: none; }
+
+.vt-card {
+  width: min(92%, 420px);
+  max-height: 96%;
+  overflow-y: auto;
+  border: 2px solid var(--svarta);
+  background: var(--papper);
+  padding: 1.25rem 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vt-card-title {
+  font-family: var(--font-display);
+  font-size: var(--steg-3);
+  line-height: var(--radavstand-display);
+  text-transform: uppercase;
+  letter-spacing: var(--sparrning-display);
+  color: var(--svarta);
+  border-bottom: var(--linje-sektion);
+  padding-bottom: 0.5rem;
+}
+
+.vt-card-stats {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.1rem 1rem;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.vt-card-stats dt {
+  font-size: var(--steg--1);
+  letter-spacing: var(--sparrning-etikett);
+  text-transform: uppercase;
+  color: var(--dis);
+}
+.vt-card-stats dd {
+  font-size: var(--steg-1);
+  color: var(--svarta);
+  text-align: right;
+}
+
+/* Löftesblocket: Source Serif, utlovats löftessidans anda.
+ * Partiet visas KOSMETISKT (färg + förkortning) — ingen värdering. */
+.vt-promise {
+  font-family: var(--font-brod);
+  border-top: var(--linje-under);
+  padding-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.vt-promise-rubrik {
+  font-family: var(--font-display);
+  font-size: var(--steg-1);
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: var(--sparrning-display);
+  color: var(--svarta);
+}
+.vt-promise-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+  letter-spacing: var(--sparrning-etikett);
+  text-transform: uppercase;
+  color: var(--dis);
+}
+/* Partistämpel: färgad plupp + förkortning, kontrasttext via color_text */
+.vt-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--svarta);
+  /* partifärg sätts inline av ui.ts */
+}
+.vt-stamp-swatch {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  /* partifärg inline */
+}
+.vt-stamp-abbr {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  /* color_text inline */
+}
+.vt-promise-cost {
+  color: var(--svarta);
+}
+.vt-promise-quote {
+  font-family: var(--font-brod);
+  font-style: italic;
+  font-size: var(--steg-0);
+  line-height: var(--radavstand-brod);
+  color: var(--grafit);
+  /* Hängande citattecken utan att vara `verbatim`-mekanik — neutrala nålar. */
+}
+.vt-promise-quote::before { content: "“"; }
+.vt-promise-quote::after  { content: "”"; }
+.vt-promise-source {
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+  color: var(--dis);
+  letter-spacing: var(--sparrning-etikett);
+  text-transform: uppercase;
+}
+.vt-promise-source a { color: var(--svarta); }
+
+.vt-card-foot {
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+  color: var(--dis);
+  border-top: var(--linje-under);
+  padding-top: 0.5rem;
+  text-align: center;
+  letter-spacing: var(--sparrning-etikett);
+  text-transform: uppercase;
+}

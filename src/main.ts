@@ -5,7 +5,7 @@ import { computeMetrics, drawScene } from './render';
 import { lockScore, lineScore } from './score';
 import { colorForParty } from './mapping';
 import { loadStore, saveStore, bestOf, addScore } from './highscore';
-import { setStats, showNext, showDetail, showStatus, showGameOver, setMethodText } from './ui';
+import { setStats, showNext, showDetail, showStatus, showGameOver, hideOverlay, setMethodText } from './ui';
 import type { GamePiece, PartyData, PartyCode } from './types';
 
 // COLS/ROWS are re-exported by main only for potential downstream use; keep the
@@ -15,7 +15,7 @@ void COLS; void ROWS;
 let parties: PartyData[] = [];
 let pool: PromisePool | null = null;
 let board = createBoard();
-let active = spawn({ id:'x', title:'', party:'s', category:'övrigt', msek_base:0, shape:'O' });
+let active = spawn({ id:'x', title:'', party:'s', category:'övrigt', msek_base:0, shape:'O', quote:'', source:{url:'',domain:''} });
 let nextPiece: GamePiece | null = null;
 let score = 0, level = 1, lines = 0, killer: GamePiece | null = null;
 let over = false;
@@ -31,11 +31,14 @@ function tickInterval() { return Math.max(120, 800 - (level - 1) * 60); }
 let lastTick = 0;
 
 function colorOf(p: string) { return colorForParty(p as PartyCode, parties); }
+function textColorOf(p: string): string {
+  return parties.find((x) => x.code === (p as PartyCode))?.color_text ?? '#111111';
+}
 
 function draw() {
   const canvas = document.getElementById('board') as HTMLCanvasElement;
   const ctx = canvas.getContext('2d')!;
-  drawScene(ctx, computeMetrics(canvas.width, canvas.height), board, over ? null : active, colorOf);
+  drawScene(ctx, computeMetrics(canvas.width, canvas.height), board, over ? null : active, colorOf, textColorOf);
 }
 
 function spawnNext() {
@@ -64,7 +67,7 @@ function lockActive() {
   } else {
     score += lockScore(active.game);
   }
-  setStats(score, level, bestOf(store));
+  setStats(score, level, lines, bestOf(store));
   spawnNext();
 }
 
@@ -113,8 +116,8 @@ function pruneOnBoard() {
 function endGame(k: GamePiece) {
   over = true;
   addScore(store, score); saveStore(store);
-  showGameOver(k, parties, score, lines);
-  setStats(score, level, bestOf(store));
+  showGameOver(k, parties, score, lines, level, bestOf(store));
+  setStats(score, level, lines, bestOf(store));
 }
 
 function step(now: number) {
@@ -131,7 +134,7 @@ function step(now: number) {
 
 function reset() {
   board = createBoard(); score = 0; level = 1; lines = 0; over = false; killer = null;
-  nextPiece = null; onBoard.clear(); showStatus(''); spawnNext(); setStats(0, 1, bestOf(store));
+  nextPiece = null; onBoard.clear(); hideOverlay(); showStatus(''); spawnNext(); setStats(0, 1, 0, bestOf(store));
 }
 
 window.addEventListener('keydown', (e) => {
@@ -144,7 +147,7 @@ window.addEventListener('keydown', (e) => {
     case ' ': active = { ...active, row: hardDropRow(board, active) }; lockActive(); break;
     default: return;
   }
-  setStats(score, level, bestOf(store));
+  setStats(score, level, lines, bestOf(store));
 });
 
 const nextEl = document.getElementById('next');
