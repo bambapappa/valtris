@@ -163,8 +163,15 @@
 
 /* Nästa-kloss: mini-rendering av formen (4×4 celler) i partifärg, med
  * stämpelfärgad förkortning centrerad över formen. Formen = styrspelet
- * (kategori), färgen = kosmetiskt (parti). radius 0, svart hårlinje. */
-.vt-next { min-height: 0; }
+ * (kategori), färgen = kosmetiskt (parti). radius 0, svart hårlinje.
+ * Cellerna är stora nog att formen ska kännas igen direkt vid en snabb
+ * blick; griden centreras i panelen och containern får aldrig klippa. */
+.vt-next {
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .vt-next-shape {
   position: relative;
   display: inline-block;
@@ -172,13 +179,13 @@
 }
 .vt-next-grid {
   display: grid;
-  grid-template-columns: repeat(4, 0.9rem);
-  grid-template-rows: repeat(4, 0.9rem);
+  grid-template-columns: repeat(4, 1.6rem);
+  grid-template-rows: repeat(4, 1.6rem);
   gap: 0;
 }
 .vt-next-cell {
-  width: 0.9rem;
-  height: 0.9rem;
+  width: 1.6rem;
+  height: 1.6rem;
   background: transparent;
   border: 1px solid transparent;
   box-sizing: border-box;
@@ -209,27 +216,38 @@
   color: var(--dis);
   text-transform: lowercase;
   line-height: 1;
+  min-width: 0;
+  max-width: 100%;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 
-/* Poäng-stat: Mono, tabulär */
+/* Poäng-stat: Mono, tabulär. Statarna staplas vertikalt (etikett överst,
+ * värdet under) för att undvika tvåkolumnsbreddningen som spillde utanför
+ * spalten när etiketterna är bredare än kolumnen. */
 .vt-stats {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums lining-nums;
+  min-width: 0;
 }
 .vt-stats dt {
   font-size: var(--steg--1);
   letter-spacing: var(--sparrning-etikett);
   text-transform: uppercase;
   color: var(--dis);
-  align-self: center;
+  line-height: 1;
+  margin-bottom: 0.15rem;
 }
 .vt-stats dd {
   font-size: var(--steg-1);
   color: var(--svarta);
-  text-align: right;
+  text-align: left;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 /* Poäng = det viktigaste talet → gul accent-markör (en vänsterkant) så ögat
  * hittar det. Neutral signalfärg, ingen partikoppling. */
