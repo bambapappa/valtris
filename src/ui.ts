@@ -41,6 +41,11 @@ export function setStats(score: number, level: number, lines: number, high: numb
  * förkortningen är läslig för alla 8 partier. Visar INGEN poängsammanställning
  * i förväg — neutralitet.
  */
+/**
+ * Nästa-kloss i profil: en mini-rendering av själva tetrominoFORMEN
+ * anpassad exakt efter formens bounding box, med samma 3D-fasade klossar
+ * och partistämplar som på spelplanen.
+ */
 export function showNext(piece: GamePiece | null, parties: PartyData[]) {
   const el = document.getElementById('next');
   if (!el) return;
@@ -50,27 +55,43 @@ export function showNext(piece: GamePiece | null, parties: PartyData[]) {
   const fg = stampColorOn(bg);
   const abbr = piece.party.toUpperCase();
 
-  // 4×4 bounding box; fyll bara de celler som formen faktiskt täcker (rotation 0).
-  const filled = new Set(shapeCells(piece.shape).map(([r, c]) => `${r},${c}`));
-  const cells: string[] = [];
-  for (let r = 0; r < 4; r++) {
-    for (let c = 0; c < 4; c++) {
-      const isFilled = filled.has(`${r},${c}`);
-      cells.push(
-        isFilled
-          ? `<span class="vt-next-cell is-filled" style="background:${bg};border-color:${SVARTA}"></span>`
-          : `<span class="vt-next-cell"></span>`,
-      );
+  const cells = shapeCells(piece.shape);
+  const rows = cells.map(([r]) => r);
+  const cols = cells.map(([, c]) => c);
+  const minR = Math.min(...rows);
+  const maxR = Math.max(...rows);
+  const minC = Math.min(...cols);
+  const maxC = Math.max(...cols);
+
+  const numRows = maxR - minR + 1;
+  const numCols = maxC - minC + 1;
+
+  const filledSet = new Set(cells.map(([r, c]) => `${r - minR},${c - minC}`));
+
+  const cellHtmls: string[] = [];
+  for (let r = 0; r < numRows; r++) {
+    for (let c = 0; c < numCols; c++) {
+      const isFilled = filledSet.has(`${r},${c}`);
+      if (isFilled) {
+        cellHtmls.push(
+          `<div class="vt-next-block" style="background:${bg};color:${fg};"><span>${abbr}</span></div>`
+        );
+      } else {
+        cellHtmls.push(`<div class="vt-next-empty"></div>`);
+      }
     }
   }
 
-  el.innerHTML = `<div class="vt-next-shape">
-    <div class="vt-next-grid" role="img" aria-label="Nästa kloss: form ${piece.shape}, parti ${abbr}">
-      ${cells.join('')}
+  el.innerHTML = `<div class="vt-next-wrap" role="img" aria-label="Nästa kloss: form ${piece.shape}, parti ${abbr}">
+    <div class="vt-next-grid" style="grid-template-columns:repeat(${numCols}, 1.75rem);grid-template-rows:repeat(${numRows}, 1.75rem);">
+      ${cellHtmls.join('')}
     </div>
-    <span class="vt-next-abbr" style="color:${fg}">${abbr}</span>
-  </div>
-  <span class="vt-cat" style="color:${fg};opacity:0.85">${piece.category}</span>`;
+    <div class="vt-next-meta">
+      <span class="vt-next-form">Form ${piece.shape}</span>
+      <span class="vt-next-divider">·</span>
+      <span class="vt-next-cat">${escapeHtml(piece.category)}</span>
+    </div>
+  </div>`;
 }
 
 /** Detaljpuff vid hover på nästa-kloss — löftet i korthet, neutral ton. */
@@ -93,6 +114,8 @@ export function showStatus(msg: string) {
  */
 export function showActiveTelegram(piece: GamePiece | null, parties: PartyData[]) {
   const stampEl = document.getElementById('telegram-stamp');
+  const partyEl = document.getElementById('telegram-party');
+  const catEl = document.getElementById('telegram-category');
   const titleEl = document.getElementById('telegram-title');
   const costEl = document.getElementById('telegram-cost');
   if (!stampEl || !titleEl || !costEl) return;
@@ -101,6 +124,8 @@ export function showActiveTelegram(piece: GamePiece | null, parties: PartyData[]
     stampEl.textContent = 'VAL';
     stampEl.style.background = SVARTA;
     stampEl.style.color = PAPPER;
+    if (partyEl) partyEl.textContent = 'valtris';
+    if (catEl) catEl.textContent = '';
     titleEl.textContent = 'valtris';
     costEl.textContent = '';
     return;
@@ -109,10 +134,14 @@ export function showActiveTelegram(piece: GamePiece | null, parties: PartyData[]
   const party = parties.find((p) => p.code === piece.party);
   const partyColor = party?.color ?? '#888888';
   const partyText = stampColorOn(partyColor);
+  const partyName = party?.name ?? piece.party.toUpperCase();
 
   stampEl.textContent = piece.party.toUpperCase();
   stampEl.style.background = partyColor;
   stampEl.style.color = partyText;
+
+  if (partyEl) partyEl.textContent = partyName;
+  if (catEl) catEl.textContent = piece.category;
 
   titleEl.textContent = piece.title;
   costEl.textContent = piece.msek_base > 0 ? `${fmt(piece.msek_base)} MSEK` : '0 MSEK (REGLERING)';

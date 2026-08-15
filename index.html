@@ -64,12 +64,18 @@
       <section class="vt-game" hidden>
         <!-- Live-telegramremsa: visar aktivt vallöfte i realtid -->
         <div id="telegram" class="vt-telegram" aria-live="polite" aria-label="Aktivt vallöfte">
-          <div class="vt-telegram-inner">
-            <span id="telegram-stamp" class="vt-telegram-stamp">VAL</span>
-            <span id="telegram-title" class="vt-telegram-title">Väntar på kloss…</span>
+          <div class="vt-telegram-header">
+            <div class="vt-telegram-meta">
+              <span id="telegram-stamp" class="vt-telegram-stamp">VAL</span>
+              <span id="telegram-party" class="vt-telegram-party">valtris</span>
+              <span class="vt-telegram-divider">·</span>
+              <span id="telegram-category" class="vt-telegram-category"></span>
+            </div>
             <span id="telegram-cost" class="vt-telegram-cost">0 MSEK</span>
           </div>
+          <div id="telegram-title" class="vt-telegram-title">valtris</div>
         </div>
+
 
         <div class="vt-board-wrap">
           <canvas id="board" width="300" height="600" aria-label="Spelplan"></canvas>

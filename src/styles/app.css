@@ -117,46 +117,75 @@
 .vt-telegram {
   grid-column: 1 / -1;
   width: 100%;
-  max-width: 480px;
-  margin: 0 auto 0.25rem;
+  max-width: 580px;
+  margin: 0 auto 0.4rem;
   background: var(--svarta);
   color: var(--papper);
-  border-bottom: 2px solid var(--gul);
-  padding: 0.4rem 0.6rem;
+  border: 2px solid var(--svarta);
+  border-bottom: 3px solid var(--gul);
+  padding: 0.55rem 0.85rem;
   box-sizing: border-box;
-}
-.vt-telegram-inner {
   display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+.vt-telegram-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  overflow: hidden;
   font-family: var(--font-mono);
   font-size: var(--steg--1);
+  letter-spacing: var(--sparrning-etikett);
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 0.25rem;
+}
+.vt-telegram-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  overflow: hidden;
 }
 .vt-telegram-stamp {
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: var(--steg--1);
-  padding: 0.1rem 0.35rem;
-  border: 1px solid var(--svarta);
+  padding: 0.1rem 0.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
   white-space: nowrap;
 }
-.vt-telegram-title {
-  flex: 1;
-  font-family: var(--font-brod);
-  font-size: var(--steg-0);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.vt-telegram-party {
   color: #faf8f5;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.vt-telegram-divider {
+  color: var(--dis);
+}
+.vt-telegram-category {
+  color: var(--dis);
+  text-transform: lowercase;
+  white-space: nowrap;
 }
 .vt-telegram-cost {
   color: var(--gul);
   font-weight: 700;
   white-space: nowrap;
-  font-size: var(--steg--1);
+  font-size: var(--steg-0);
+  font-variant-numeric: tabular-nums lining-nums;
 }
+.vt-telegram-title {
+  font-family: var(--font-brod);
+  font-size: var(--steg-0);
+  font-weight: 600;
+  line-height: 1.35;
+  color: #faf8f5;
+  margin: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 
 .vt-board-wrap {
   position: relative;
@@ -238,66 +267,72 @@
   border-bottom: var(--linje-under);
 }
 
-/* Nästa-kloss: mini-rendering av formen (4×4 celler) i partifärg, med
- * stämpelfärgad förkortning centrerad över formen. Formen = styrspelet
- * (kategori), färgen = kosmetiskt (parti). radius 0, svart hårlinje.
- * Cellerna är stora nog att formen ska kännas igen direkt vid en snabb
- * blick; griden centreras i panelen och containern får aldrig klippa. */
+/* Nästa-kloss: mini-rendering av formen med 3D-fasade klossar
+ * anpassad exakt efter formens bounding box. */
 .vt-next {
   min-height: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0.4rem 0;
 }
-.vt-next-shape {
-  position: relative;
-  display: inline-block;
-  line-height: 0;
+.vt-next-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
 }
 .vt-next-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1.6rem);
-  grid-template-rows: repeat(4, 1.6rem);
-  gap: 0;
+  gap: 1px;
+  justify-content: center;
+  align-items: center;
 }
-.vt-next-cell {
-  width: 1.6rem;
-  height: 1.6rem;
-  background: transparent;
-  border: 1px solid transparent;
+.vt-next-block {
+  width: 1.75rem;
+  height: 1.75rem;
   box-sizing: border-box;
-}
-.vt-next-cell.is-filled {
-  /* background + border-color sätts via inline style av ui.ts */
-  border-style: solid;
-}
-.vt-next-abbr {
-  position: absolute;
-  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: var(--steg-0);
-  letter-spacing: var(--sparrning-etikett);
+  font-size: var(--steg--1);
   line-height: 1;
-  pointer-events: none;
-  /* text-färg via inline style (stampColorOn) för kontrast */
+  border-top: 3px solid rgba(255, 255, 255, 0.45);
+  border-left: 3px solid rgba(255, 255, 255, 0.45);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.45);
+  border-right: 3px solid rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
-.vt-cat {
-  display: block;
-  margin-top: 0.3rem;
+.vt-next-empty {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.vt-next-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
   font-family: var(--font-mono);
   font-size: var(--steg--1);
+  color: var(--grafit);
+  text-align: center;
+}
+.vt-next-form {
+  font-weight: 700;
+  color: var(--svarta);
+}
+.vt-next-divider {
+  color: var(--linje-svag);
+}
+.vt-next-cat {
   color: var(--dis);
   text-transform: lowercase;
-  line-height: 1;
-  min-width: 0;
-  max-width: 100%;
-  text-align: center;
-  overflow-wrap: anywhere;
 }
+
 
 /* Poäng-stat: Mono, tabulär. Statarna staplas vertikalt (etikett överst,
  * värdet under) för att undvika tvåkolumnsbreddningen som spillde utanför
