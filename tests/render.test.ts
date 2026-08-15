@@ -33,6 +33,8 @@ describe('render', () => {
       strokeRect: () => calls.push('strokeRect'),
       stroke: () => calls.push('stroke'),
       beginPath: () => calls.push('beginPath'),
+      closePath: () => calls.push('closePath'),
+      fill: () => calls.push('fill'),
       moveTo: () => calls.push('moveTo'),
       lineTo: () => calls.push('lineTo'),
       fillText: () => calls.push('fillText'),
@@ -42,6 +44,7 @@ describe('render', () => {
       translate: translateMock,
       measureText: () => ({ width: 40 }),
     } as unknown as CanvasRenderingContext2D;
+
 
     const b = createBoard();
     const active = spawn({ id: '1', title: 'T', slug: 't', party: 's', category: 'välfärd', msek_base: 100, shape: 'I', quote: '', source: { url: '', domain: '' } });

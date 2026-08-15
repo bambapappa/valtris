@@ -33,16 +33,17 @@ export function cellRect(
   };
 }
 
-const DEEP_TOP = 0.18;
-const DEEP_BOTTOM = 0.22;
-const HL_AMT = 0.28;
-const SH_AMT = 0.34;
-
 export interface ClearFlash {
   rows: number[];
   until: number;
 }
 
+
+/**
+ * Taktil kloss med 45°-fasning (Stil A):
+ * Ljusare fasning uppe/vänster, mörkare fasning nere/höger, och skarp
+ * 1px mörk yttre ram för djup och taktil trycksakskänsla.
+ */
 function fillCell(
   ctx: CanvasRenderingContext2D,
   m: ViewMetrics,
@@ -52,31 +53,74 @@ function fillCell(
   color: string,
 ): void {
   const r = cellRect(m, row, col);
+  const bevel = Math.max(2, Math.round(m.cell * 0.12));
+
+  // 1. Bas-rektangel
   ctx.fillStyle = color;
   ctx.fillRect(r.x, r.y, r.w, r.h);
 
-  const topH = Math.max(1, Math.round(r.h * DEEP_TOP));
-  const botH = Math.max(1, Math.round(r.h * DEEP_BOTTOM));
-  ctx.fillStyle = mix(color, '#ffffff', HL_AMT);
-  ctx.fillRect(r.x, r.y, r.w, topH);
-  ctx.fillStyle = mix(color, '#000000', SH_AMT);
-  ctx.fillRect(r.x, r.y + r.h - botH, r.w, botH);
+  // 2. Topp & vänster fasning (ljusare highlight)
+  ctx.fillStyle = mix(color, '#ffffff', 0.42);
+  // Topp-fasning (trapets)
+  ctx.beginPath();
+  ctx.moveTo(r.x, r.y);
+  ctx.lineTo(r.x + r.w, r.y);
+  ctx.lineTo(r.x + r.w - bevel, r.y + bevel);
+  ctx.lineTo(r.x + bevel, r.y + bevel);
+  ctx.closePath();
+  ctx.fill();
 
-  ctx.strokeStyle = 'rgba(0,0,0,0.25)';
+  // Vänster-fasning (trapets)
+  ctx.beginPath();
+  ctx.moveTo(r.x, r.y);
+  ctx.lineTo(r.x + bevel, r.y + bevel);
+  ctx.lineTo(r.x + bevel, r.y + r.h - bevel);
+  ctx.lineTo(r.x, r.y + r.h);
+  ctx.closePath();
+  ctx.fill();
+
+  // 3. Botten & höger fasning (mörkare skugga)
+  ctx.fillStyle = mix(color, '#000000', 0.45);
+  // Botten-fasning (trapets)
+  ctx.beginPath();
+  ctx.moveTo(r.x, r.y + r.h);
+  ctx.lineTo(r.x + bevel, r.y + r.h - bevel);
+  ctx.lineTo(r.x + r.w - bevel, r.y + r.h - bevel);
+  ctx.lineTo(r.x + r.w, r.y + r.h);
+  ctx.closePath();
+  ctx.fill();
+
+  // Höger-fasning (trapets)
+  ctx.beginPath();
+  ctx.moveTo(r.x + r.w, r.y);
+  ctx.lineTo(r.x + r.w, r.y + r.h);
+  ctx.lineTo(r.x + r.w - bevel, r.y + r.h - bevel);
+  ctx.lineTo(r.x + r.w - bevel, r.y + bevel);
+  ctx.closePath();
+  ctx.fill();
+
+  // 4. Inre plan yta
+  ctx.fillStyle = color;
+  ctx.fillRect(r.x + bevel, r.y + bevel, r.w - bevel * 2, r.h - bevel * 2);
+
+  // 5. Yttre skarp hårlinje
+  ctx.strokeStyle = 'rgba(0,0,0,0.35)';
   ctx.lineWidth = 1;
   ctx.strokeRect(r.x + 0.5, r.y + 0.5, r.w - 1, r.h - 1);
 
+  // 6. Stämpel: partiförkortning i Mono, centrerad
   const label = party.toUpperCase();
   ctx.fillStyle = stampColorOn(color);
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.font = `${Math.round(m.cell * 0.42)}px ${FONT_MONO}`;
+  ctx.font = `bold ${Math.round(m.cell * 0.40)}px ${FONT_MONO}`;
   ctx.fillText(label, r.x + r.w / 2, r.y + r.h / 2 + 0.5);
 }
 
 /**
- * Ghost piece (landningsskugga): ritas med partifärgad streckad kontur och
- * mjuk 14% fyllning så spelaren ser exakt var klossen landar.
+ * Ghost piece (landningsskugga): ritas med partifärgad inre fyllning
+ * och en mörk streckad ytterlinje med hög kontrast så den syns perfekt
+ * mot pappersbakgrunden oavsett om partifärgen är ljusgul, ljusblå eller mörk.
  */
 function drawGhost(
   ctx: CanvasRenderingContext2D,
@@ -85,8 +129,9 @@ function drawGhost(
   color: string,
 ): void {
   ctx.save();
+  // Partifärgad mjuk fyllning
   ctx.fillStyle = color;
-  ctx.globalAlpha = 0.14;
+  ctx.globalAlpha = 0.22;
   for (const [r, c] of cellsOf(ghost)) {
     if (r >= 0 && r < ROWS && c >= 0 && c < COLS) {
       const rr = cellRect(m, r, c);
@@ -94,8 +139,9 @@ function drawGhost(
     }
   }
 
+  // Mörk streckad kontur för skarp kontrast mot papper
   ctx.globalAlpha = 0.65;
-  ctx.strokeStyle = color;
+  ctx.strokeStyle = SVARTA;
   ctx.lineWidth = 1.5;
   if (typeof ctx.setLineDash === 'function') {
     ctx.setLineDash([3, 2]);
