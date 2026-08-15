@@ -5,10 +5,15 @@ live från [utlovat.se](https://utlovat.se). Spelet testar din skicklighet att
 placera klossar; poängen hämtas från löftenas verkliga kostnader. Ingen ska
 kunna spela det och dra slutsatsen att ett parti är “bäst” eller “sämst”.
 
-## Status
+## Om spelet
 
-Designskede. Se
-[`docs/superpowers/specs/2026-08-12-valtris-design.md`](docs/superpowers/specs/2026-08-12-valtris-design.md).
+Varje kloss i spelet motsvarar ett verkligt vallöfte från de åtta riksdagspartierna. 
+* **Formen** styrs av löftets kategori (välfärd, skatter, rättsväsende osv.).
+* **Partiet och färgen** är 100 % kosmetiska och påverkar varken fysik, form eller poängberäkning.
+* **Poängen** baseras på reformens verkliga kostnad i miljoner kronor (MSEK).
+
+Neutraliteten i slumpningen och viktningen verifieras automatiskt av testsviten (`npm test`).
+
 
 ## Data och licens
 
