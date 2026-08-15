@@ -48,3 +48,30 @@ export interface GamePiece {
   /** Löftets källa — visas i game-over. */
   source: PromiseSource;
 }
+
+export interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  w: number;
+  h: number;
+  rotation: number;
+  vRot: number;
+  color: string;
+  alpha: number;
+  life: number;
+  maxLife: number;
+  active: boolean;
+}
+
+export interface FloatingText {
+  x: number;
+  y: number;
+  text: string;
+  color: string;
+  alpha: number;
+  life: number;
+  maxLife: number;
+  active: boolean;
+}
