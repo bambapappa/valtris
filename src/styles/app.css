@@ -29,6 +29,38 @@
   border-bottom: var(--linje-sektion);
   padding-bottom: 1rem;
 }
+.vt-head-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.vt-head-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.vt-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-family: var(--font-mono);
+  font-size: var(--steg-0);
+  font-weight: 700;
+  color: var(--svarta);
+  background: var(--papper);
+  border: 2px solid var(--svarta);
+  cursor: pointer;
+  padding: 0;
+  transition: background 60ms linear;
+}
+.vt-icon-btn:hover {
+  background: var(--gul);
+}
+.vt-icon-btn:active {
+  background: var(--svarta);
+  color: var(--papper);
+}
 .vt-eyebrow {
   font-family: var(--font-mono);
   font-size: var(--steg--1);
@@ -79,6 +111,51 @@
     grid-template-columns: minmax(0, 1fr);
     justify-items: center;
   }
+}
+
+/* ── Live-telegram (Toppremsa) ── */
+.vt-telegram {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 0.25rem;
+  background: var(--svarta);
+  color: var(--papper);
+  border-bottom: 2px solid var(--gul);
+  padding: 0.4rem 0.6rem;
+  box-sizing: border-box;
+}
+.vt-telegram-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: var(--steg--1);
+}
+.vt-telegram-stamp {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--steg--1);
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--svarta);
+  white-space: nowrap;
+}
+.vt-telegram-title {
+  flex: 1;
+  font-family: var(--font-brod);
+  font-size: var(--steg-0);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #faf8f5;
+}
+.vt-telegram-cost {
+  color: var(--gul);
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: var(--steg--1);
 }
 
 .vt-board-wrap {
@@ -478,6 +555,31 @@
   border-bottom: 1px solid currentColor;
   padding: 0 0 1px;
   cursor: pointer;
+}
+
+/* ── Help Modal Sections ── */
+.vt-help-section {
+  border-top: var(--linje-under);
+  padding-top: 0.6rem;
+  margin-top: 0.2rem;
+}
+.vt-help-h3 {
+  font-family: var(--font-display);
+  font-size: var(--steg-0);
+  text-transform: uppercase;
+  letter-spacing: var(--sparrning-display);
+  color: var(--svarta);
+  margin-bottom: 0.25rem;
+}
+.vt-help-p {
+  font-family: var(--font-brod);
+  font-size: var(--steg--1);
+  line-height: 1.45;
+  color: var(--grafit);
+  margin: 0 0 0.4rem;
+}
+.vt-help-p strong {
+  color: var(--svarta);
 }
 
 /* ── Startskärm ──

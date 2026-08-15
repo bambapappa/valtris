@@ -10,9 +10,19 @@
   <body>
     <main id="app" class="vt-app">
       <header class="vt-head">
-        <p class="vt-eyebrow">utlovat.se × tetris</p>
+        <div class="vt-head-top">
+          <p class="vt-eyebrow">utlovat.se × tetris</p>
+          <div class="vt-head-actions">
+            <button id="sound-btn" class="vt-icon-btn" type="button" aria-label="Slå på/av ljud" title="Ljud">
+              <span id="sound-icon">🔊</span>
+            </button>
+            <button id="help-btn" class="vt-icon-btn" type="button" aria-label="Hur man spelar" title="Regler & hjälp">
+              <span>?</span>
+            </button>
+          </div>
+        </div>
         <h1 class="vt-title">valtris</h1>
-        <p class="vt-sub">Tetris med partiernas riktiga vallöften. Partiet på klossen är kosmetiskt — det styr inget.</p>
+        <p class="vt-sub">Tetris med partiernas verkliga vallöften. Partiet på klossen är kosmetiskt — det styr inget.</p>
       </header>
 
       <section id="start-screen" class="vt-start" aria-label="Startskärm">
@@ -52,12 +62,19 @@
       </section>
 
       <section class="vt-game" hidden>
+        <!-- Live-telegramremsa: visar aktivt vallöfte i realtid -->
+        <div id="telegram" class="vt-telegram" aria-live="polite" aria-label="Aktivt vallöfte">
+          <div class="vt-telegram-inner">
+            <span id="telegram-stamp" class="vt-telegram-stamp">VAL</span>
+            <span id="telegram-title" class="vt-telegram-title">Väntar på kloss…</span>
+            <span id="telegram-cost" class="vt-telegram-cost">0 MSEK</span>
+          </div>
+        </div>
+
         <div class="vt-board-wrap">
           <canvas id="board" width="300" height="600" aria-label="Spelplan"></canvas>
           <div id="overlay" class="vt-overlay" hidden></div>
-          <!-- Touch-kontroller: syns på alla enheter (upptäckbara), tas inte
-               bort på desktop. Knapparna triggar samma handlingar som
-               tangentbordet (data-action → handleAction i main.ts). -->
+          
           <div class="vt-touch" role="group" aria-label="Kontroller">
             <button class="vt-btn" type="button" data-action="left" aria-label="Vänster"><span aria-hidden="true">◀</span></button>
             <button class="vt-btn" type="button" data-action="rotate" aria-label="Rotera"><span aria-hidden="true">↻</span></button>
@@ -85,6 +102,43 @@
           <div id="status" class="vt-status" role="status" aria-live="polite"></div>
         </aside>
       </section>
+
+      <!-- Hjälp- och regelmodal (?) -->
+      <div id="help-modal" class="vt-overlay" hidden>
+        <div class="vt-card" role="dialog" aria-labelledby="help-title">
+          <h2 id="help-title" class="vt-card-title">Hur fungerar valtris?</h2>
+          
+          <div class="vt-help-section">
+            <h3 class="vt-help-h3">1. Kontroller</h3>
+            <p class="vt-help-p"><strong>Tangentbord:</strong> Vänster/Höger piltangent flyttar. Upp roterar. Ner tappar mjukt (+1p/rad). Mellanslag tappar hårt direkt till botten.</p>
+            <p class="vt-help-p"><strong>Mobil/Touch:</strong> Tryckknapparna under spelplanen styr spelet.</p>
+          </div>
+
+          <div class="vt-help-section">
+            <h3 class="vt-help-h3">2. Form = Kategori (Styr spelet)</h3>
+            <p class="vt-help-p">Klossens form bestäms av löftets politiska kategori (t.ex. Välfärd/Utbildning = I, Skatter = L, Klimat = T). Denna kartläggning är fast och gäller alla partier lika.</p>
+          </div>
+
+          <div class="vt-help-section">
+            <h3 class="vt-help-h3">3. Färg = Parti (Endast kosmetiskt)</h3>
+            <p class="vt-help-p">Partifärgen visar vem som gett löftet, men ger absolut ingen fördel, förändring av gravitation eller bonus. Samma fysik gäller alla klossar.</p>
+          </div>
+
+          <div class="vt-help-section">
+            <h3 class="vt-help-h3">4. Poängräkning</h3>
+            <p class="vt-help-p">När en kloss låses får du dess verkliga årskostnad i poäng (MSEK). När rader rensas multipliceras summan av radens löften med antal rensade rader och nivå.</p>
+          </div>
+
+          <div class="vt-help-section">
+            <h3 class="vt-help-h3">5. Data & Neutralitet</h3>
+            <p class="vt-help-p">All data hämtas live från <a href="https://utlovat.se" target="_blank" rel="noopener">utlovat.se</a> (CC-BY-4.0). valtris är ett oberoende projekt utan partikoppling.</p>
+          </div>
+
+          <p class="vt-card-foot">
+            <button id="close-help-btn" class="vt-link-btn" type="button">Stäng (Esc)</button>
+          </p>
+        </div>
+      </div>
 
       <section id="detail" class="vt-detail" hidden></section>
 

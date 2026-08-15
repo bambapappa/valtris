@@ -89,6 +89,50 @@ export function showStatus(msg: string) {
 }
 
 /**
+ * Visar aktivt vallöfte i realtid i telegram-remsan över spelplanen.
+ */
+export function showActiveTelegram(piece: GamePiece | null, parties: PartyData[]) {
+  const stampEl = document.getElementById('telegram-stamp');
+  const titleEl = document.getElementById('telegram-title');
+  const costEl = document.getElementById('telegram-cost');
+  if (!stampEl || !titleEl || !costEl) return;
+
+  if (!piece) {
+    stampEl.textContent = 'VAL';
+    stampEl.style.background = SVARTA;
+    stampEl.style.color = PAPPER;
+    titleEl.textContent = 'valtris';
+    costEl.textContent = '';
+    return;
+  }
+
+  const party = parties.find((p) => p.code === piece.party);
+  const partyColor = party?.color ?? '#888888';
+  const partyText = stampColorOn(partyColor);
+
+  stampEl.textContent = piece.party.toUpperCase();
+  stampEl.style.background = partyColor;
+  stampEl.style.color = partyText;
+
+  titleEl.textContent = piece.title;
+  costEl.textContent = piece.msek_base > 0 ? `${fmt(piece.msek_base)} MSEK` : '0 MSEK (REGLERING)';
+}
+
+export function showHelpModal(visible: boolean) {
+  const modal = document.getElementById('help-modal');
+  if (modal) {
+    modal.hidden = !visible;
+  }
+}
+
+export function updateSoundButton(muted: boolean) {
+  const icon = document.getElementById('sound-icon');
+  if (icon) {
+    icon.textContent = muted ? '🔇' : '🔊';
+  }
+}
+
+/**
  * Game-over-overlay. Egentligt papperskort centrerat över brädet, i utlovats
  * stil: Anton-versal rubrik "SPELET SLUT", Mono-stats (poäng, rader, nivå,
  * bästa) och ett Source Serif-block som skriver ut det löfte som fyllt
