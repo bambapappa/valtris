@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   createBoard, cellsOf, canPlace, tryMove, tryRotate,
   hardDropRow, lockPiece, clearLines, spawn, isSpawnBlocked,
-  shapeCells,
+  shapeCells, ghostPiece,
   COLS, ROWS,
 } from '../src/engine';
 import type { GamePiece } from '../src/types';
@@ -134,5 +134,26 @@ describe('shapeCells', () => {
         .map(([r, c]) => `${r},${c}`).sort();
       expect(fromShapeCells).toEqual(fromCellsOf);
     }
+  });
+});
+
+describe('ghostPiece', () => {
+  it('returns an active piece positioned at the hard drop row with identical shape and game data', () => {
+    const b = createBoard();
+    const p = spawn({ id: '1', title: 'T', slug: 't', party: 's', category: 'övrigt', msek_base: 100, shape: 'O', quote: '', source: { url: '', domain: '' } });
+    const ghost = ghostPiece(b, p);
+    expect(ghost.row).toBe(ROWS - 2); // O shape is 2x2, bottom is ROWS-1
+    expect(ghost.col).toBe(p.col);
+    expect(ghost.rotation).toBe(p.rotation);
+    expect(ghost.game.id).toBe(p.game.id);
+  });
+
+  it('stops directly above locked blocks on the board', () => {
+    let b = createBoard();
+    b[ROWS - 1]![4] = { party: 'm', color: '#005ea1', pieceId: 'p1' };
+    const p = spawn({ id: '2', title: 'T2', slug: 't2', party: 'm', category: 'övrigt', msek_base: 50, shape: 'O', quote: '', source: { url: '', domain: '' } });
+    // O shape covers cols 4 and 5
+    const ghost = ghostPiece(b, p);
+    expect(ghost.row).toBe(ROWS - 3);
   });
 });

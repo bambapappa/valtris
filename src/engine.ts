@@ -106,6 +106,13 @@ export function hardDropRow(board: Board, p: ActivePiece): number {
   return row;
 }
 
+export function ghostPiece(board: Board, active: ActivePiece): ActivePiece {
+  return {
+    ...active,
+    row: hardDropRow(board, active),
+  };
+}
+
 export function lockPiece(board: Board, p: ActivePiece): Board {
   const next = board.map((r) => r.slice());
   for (const [r, c] of cellsOf(p)) {
