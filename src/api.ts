@@ -69,7 +69,7 @@ export function toGamePieces(promises: PromiseData[]): GamePiece[] {
 const DEFAULT_PROMISES_URL = 'https://utlovat.se/api/v1/promises.json';
 const DEFAULT_PARTIES_URL = 'https://utlovat.se/api/v1/parties.json';
 
-async function fetchWithTimeout(url: string, ms = 8000): Promise<any> {
+async function fetchWithTimeout(url: string, ms = 30000): Promise<any> {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
